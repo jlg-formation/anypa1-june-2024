@@ -5,3 +5,10 @@
 body {
   font-family: sans-serif;
 }
+
+main {
+  display: flex;
+  flex-flow: column;
+  gap: 0.5em;
+  align-items: center;
+}

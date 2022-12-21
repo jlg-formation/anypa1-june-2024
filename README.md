@@ -16,6 +16,18 @@
 
 ### Remove the console.log
 
+### Add some error management in the form
+
+### Add a linter
+
+### Add some PWA aspects
+
+### Do the unit testing using HttpController
+
+### Add some coverage testing
+
+### Do the e2e testing with Cypress
+
 ## Author
 
 Jean-Louis GUENEGO @2022

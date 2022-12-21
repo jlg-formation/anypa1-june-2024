@@ -2,6 +2,8 @@
 @import "../node_modules/normalize.css/normalize.css";
 @import "../node_modules/sanitize.css/sanitize.css";
 
+@import "./scss/button.scss";
+
 body {
   font-family: sans-serif;
 }
@@ -11,4 +13,13 @@ main {
   flex-flow: column;
   gap: 0.5em;
   align-items: center;
+  padding: 0.5em;
+
+  h1 {
+    text-align: center;
+  }
+
+  p {
+    align-self: flex-start;
+  }
 }

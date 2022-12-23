@@ -2,6 +2,8 @@
 
 ## Exercices
 
+### Using webpack-bundle-analyzer
+
 ### Move ArticleService in StockModule
 
 ### Add a linter

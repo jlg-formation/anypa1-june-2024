@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Article } from '../interfaces/article';
+import { Article, NewArticle } from '../interfaces/article';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { delay } from 'rxjs';
@@ -14,6 +14,10 @@ export class ArticleService {
   errorMsg = '';
 
   constructor(private http: HttpClient) {}
+
+  async add(newArticle: NewArticle) {
+    throw new Error('Method not implemented.');
+  }
 
   async load() {
     try {

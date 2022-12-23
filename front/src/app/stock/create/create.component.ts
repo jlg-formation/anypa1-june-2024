@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { faCircleNotch, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { lastValueFrom, timer } from 'rxjs';
+import { NewArticle } from 'src/app/interfaces/article';
+import { ArticleService } from 'src/app/services/article.service';
 
 @Component({
   selector: 'app-create',
@@ -7,9 +12,35 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./create.component.scss'],
 })
 export class CreateComponent implements OnInit {
+  errorMsg = '';
+  f = new FormGroup({
+    name: new FormControl('Truc', [Validators.required]),
+    price: new FormControl(0, [Validators.required]),
+    qty: new FormControl(1, [Validators.required]),
+  });
+  faCircleNotch = faCircleNotch;
   faPlus = faPlus;
+  isAdding = false;
 
-  constructor() {}
+  constructor(
+    private articleService: ArticleService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {}
+
+  async submit() {
+    try {
+      this.isAdding = true;
+      await lastValueFrom(timer(1000));
+      await this.articleService.add(this.f.value as NewArticle);
+      await this.router.navigate(['..'], { relativeTo: this.route });
+    } catch (err) {
+      console.log('err: ', err);
+      this.errorMsg = 'Cannot add';
+    } finally {
+      this.isAdding = false;
+    }
+  }
 }

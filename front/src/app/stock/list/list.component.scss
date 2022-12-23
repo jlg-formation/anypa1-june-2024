@@ -9,11 +9,12 @@ div.content {
   }
   table {
     border: 0.1em solid #bbb;
+
+    // recipe for border-radius
     border-radius: 0.3em;
     border-collapse: separate;
     border-spacing: 0;
-
-    position: relative;
+    overflow: hidden;
 
     th,
     td {
@@ -23,11 +24,18 @@ div.content {
       background-color: #bbb;
     }
     tbody {
-      position: relative;
-      z-index: -1;
-
       tr:nth-child(even) {
         background-color: #eee;
+      }
+
+      cursor: pointer;
+
+      tr:hover {
+        background-color: #ddd;
+      }
+
+      tr.selected {
+        background-color: #ccc;
       }
     }
   }

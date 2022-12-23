@@ -12,7 +12,7 @@
 
 ### Replace the theming by Angular Material
 
-### Remove the CORS and use a proxy
+### Remove the CORS and use a proxy and remove url config
 
 ### Remove the console.log
 
@@ -27,6 +27,8 @@
 ### Add some coverage testing
 
 ### Do the e2e testing with Cypress
+
+### Move ArticleService in StockModule
 
 ## Author
 

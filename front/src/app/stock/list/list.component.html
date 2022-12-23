@@ -21,11 +21,26 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let a of articleService.articles">
-          <td class="name">{{ a.name }}</td>
-          <td class="price">{{ a.price }} €</td>
-          <td class="qty">{{ a.qty }}</td>
+        <tr *ngIf="articleService.articles === undefined; else showArticles">
+          <td
+            colspan="3"
+            *ngIf="articleService.errorMsg === ''; else showError"
+          >
+            Loading...
+          </td>
+          <ng-template #showError>
+            <td colspan="3">
+              <strong> Erreur: {{ articleService.errorMsg }} </strong>
+            </td>
+          </ng-template>
         </tr>
+        <ng-template #showArticles>
+          <tr *ngFor="let a of articleService.articles">
+            <td class="name">{{ a.name }}</td>
+            <td class="price">{{ a.price }} €</td>
+            <td class="qty">{{ a.qty }}</td>
+          </tr>
+        </ng-template>
       </tbody>
     </table>
   </div>

@@ -1,14 +1,32 @@
 import { Injectable } from '@angular/core';
 import { Article } from '../interfaces/article';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { delay } from 'rxjs';
+
+const url = environment.apiDomain + '/api/articles';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ArticleService {
-  articles: Article[] = [
-    { id: 'a1', name: 'Tournevis', price: 2.99, qty: 123 },
-    { id: 'a2', name: 'Marteau', price: 5.4, qty: 51 },
-  ];
+  articles: Article[] | undefined;
+  errorMsg = '';
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
+
+  async load() {
+    try {
+      this.errorMsg = '';
+      await this.http
+        .get<Article[]>(url)
+        .pipe(delay(1000))
+        .forEach((articles) => {
+          this.articles = articles;
+        });
+    } catch (err) {
+      console.log('err: ', err);
+      this.errorMsg = 'Technical Error';
+    }
+  }
 }

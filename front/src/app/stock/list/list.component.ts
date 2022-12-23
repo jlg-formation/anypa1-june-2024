@@ -49,6 +49,8 @@ export class ListComponent implements OnInit {
       this.isRemoving = true;
       const ids = [...this.selectedArticles].map((a) => a.id);
       await this.articleService.remove(ids);
+      await this.articleService.load();
+      this.selectedArticles.clear();
     } catch (err) {
       console.log('err: ', err);
       this.errorMsg = 'Cannot suppress';

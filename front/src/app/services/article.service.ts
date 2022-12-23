@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Article, NewArticle } from '../interfaces/article';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { delay } from 'rxjs';
+import { delay, lastValueFrom, catchError } from 'rxjs';
 
 const url = environment.apiDomain + '/api/articles';
 
@@ -16,7 +16,14 @@ export class ArticleService {
   constructor(private http: HttpClient) {}
 
   async add(newArticle: NewArticle) {
-    throw new Error('Method not implemented.');
+    await lastValueFrom(
+      this.http.post<void>(url, newArticle).pipe(
+        catchError((err) => {
+          console.log('err: ', err);
+          throw new Error('Technical error');
+        })
+      )
+    );
   }
 
   async load() {

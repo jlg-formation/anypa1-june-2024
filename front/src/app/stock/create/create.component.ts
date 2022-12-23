@@ -38,7 +38,9 @@ export class CreateComponent implements OnInit {
       await this.router.navigate(['..'], { relativeTo: this.route });
     } catch (err) {
       console.log('err: ', err);
-      this.errorMsg = 'Cannot add';
+      if (err instanceof Error) {
+        this.errorMsg = err.message;
+      }
     } finally {
       this.isAdding = false;
     }

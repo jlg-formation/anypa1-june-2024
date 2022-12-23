@@ -1,6 +1,9 @@
 <main>
   <h1>Liste des articles</h1>
   <div class="content">
+    <div class="error">
+      <span *ngIf="errorMsg">Erreur: {{ errorMsg }}</span>
+    </div>
     <nav>
       <button title="Rafraîchir" (click)="refresh()" [disabled]="isRefreshing">
         <fa-icon [icon]="faRotateRight" [spin]="isRefreshing"></fa-icon>
@@ -8,8 +11,16 @@
       <a routerLink="create" class="button" title="Ajouter">
         <fa-icon [icon]="faPlus"></fa-icon>
       </a>
-      <button title="Supprimer">
-        <fa-icon [icon]="faTrashAlt"></fa-icon>
+      <button
+        title="Supprimer"
+        [hidden]="selectedArticles.size === 0"
+        (click)="remove()"
+        [disabled]="isRemoving"
+      >
+        <fa-icon
+          [icon]="isRemoving ? faCircleNotch : faTrashAlt"
+          [spin]="isRemoving"
+        ></fa-icon>
       </button>
     </nav>
     <table>

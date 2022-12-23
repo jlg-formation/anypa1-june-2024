@@ -1,7 +1,15 @@
 div.content {
   display: flex;
   flex-flow: column;
-  gap: 1em;
+  gap: 0.5em;
+
+  div.error {
+    height: 3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+  }
 
   nav {
     display: flex;

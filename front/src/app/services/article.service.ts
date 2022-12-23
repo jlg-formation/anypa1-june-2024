@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Article, NewArticle } from '../interfaces/article';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { delay, lastValueFrom, catchError } from 'rxjs';
+import { delay, lastValueFrom, catchError, switchMap, timer } from 'rxjs';
 
 const url = environment.apiDomain + '/api/articles';
 
@@ -39,5 +39,21 @@ export class ArticleService {
       console.log('err: ', err);
       this.errorMsg = 'Technical Error';
     }
+  }
+
+  async remove(ids: string[]) {
+    await lastValueFrom(
+      timer(1000).pipe(
+        switchMap(() =>
+          this.http.delete<void>(url, {
+            body: ids,
+          })
+        ),
+        catchError((err) => {
+          console.log('err: ', err);
+          throw new Error('Technical error');
+        })
+      )
+    );
   }
 }

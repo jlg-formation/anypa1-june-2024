@@ -20,6 +20,8 @@ export class ListComponent implements OnInit {
   faTrashAlt = faTrashAlt;
   isRefreshing = false;
   selectedArticles = new Set<Article>();
+  isRemoving = false;
+  errorMsg = '';
 
   constructor(public articleService: ArticleService) {}
 
@@ -31,12 +33,27 @@ export class ListComponent implements OnInit {
 
   async refresh() {
     try {
+      this.errorMsg = '';
       this.isRefreshing = true;
       await this.articleService.load();
     } catch (err) {
       console.log('err: ', err);
     } finally {
       this.isRefreshing = false;
+    }
+  }
+
+  async remove() {
+    try {
+      this.errorMsg = '';
+      this.isRemoving = true;
+      const ids = [...this.selectedArticles].map((a) => a.id);
+      await this.articleService.remove(ids);
+    } catch (err) {
+      console.log('err: ', err);
+      this.errorMsg = 'Cannot suppress';
+    } finally {
+      this.isRemoving = false;
     }
   }
 

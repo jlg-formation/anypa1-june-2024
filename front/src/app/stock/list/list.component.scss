@@ -1,0 +1,34 @@
+div.content {
+  display: flex;
+  flex-flow: column;
+  gap: 3em;
+
+  nav {
+    display: flex;
+    gap: 0.3em;
+  }
+  table {
+    border: 0.1em solid #bbb;
+    border-radius: 0.3em;
+    border-collapse: separate;
+    border-spacing: 0;
+
+    position: relative;
+
+    th,
+    td {
+      padding: 0.5em 1em;
+    }
+    thead {
+      background-color: #bbb;
+    }
+    tbody {
+      position: relative;
+      z-index: -1;
+
+      tr:nth-child(even) {
+        background-color: #eee;
+      }
+    }
+  }
+}

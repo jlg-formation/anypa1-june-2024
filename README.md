@@ -2,33 +2,33 @@
 
 ## Exercices
 
-### Upgrade the project in the latest angular version
+### Move ArticleService in StockModule
 
-### Add the lazy loading for the stock list and stock create
+### Add a linter
 
-### Add an authentication Bearer token via an interceptor
-
-### Remove the zone.js
-
-### Replace the theming by Angular Material
-
-### Remove the CORS and use a proxy and remove url config
+### Make unit testing do not fail.
 
 ### Remove the console.log
 
-### Add some error management in the form
+### Remove the CORS and use a proxy and remove url config
 
-### Add a linter
+### Add the lazy loading for the stock list and stock create
+
+### Remove the zone.js
+
+### Upgrade the project in the latest angular version
+
+### Add an authentication Bearer token via an interceptor
+
+### Replace the theming by Angular Material
+
+### Add some error management in the form
 
 ### Add some PWA aspects
 
 ### Do the unit testing using HttpController
 
-### Add some coverage testing
-
 ### Do the e2e testing with Cypress
-
-### Move ArticleService in StockModule
 
 ## Author
 

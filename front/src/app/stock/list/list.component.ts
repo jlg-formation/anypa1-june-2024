@@ -4,6 +4,7 @@ import {
   faRotateRight,
   faTrashAlt,
 } from '@fortawesome/free-solid-svg-icons';
+import { ArticleService } from 'src/app/services/article.service';
 
 @Component({
   selector: 'app-list',
@@ -15,7 +16,7 @@ export class ListComponent implements OnInit {
   faTrashAlt = faTrashAlt;
   faRotateRight = faRotateRight;
 
-  constructor() {}
+  constructor(public articleService: ArticleService) {}
 
   ngOnInit(): void {}
 }

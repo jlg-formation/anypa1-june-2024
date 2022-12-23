@@ -5,15 +5,8 @@ import { StockRoutingModule } from './stock-routing.module';
 import { CreateComponent } from './create/create.component';
 import { ListComponent } from './list/list.component';
 
-
 @NgModule({
-  declarations: [
-    CreateComponent,
-    ListComponent
-  ],
-  imports: [
-    CommonModule,
-    StockRoutingModule
-  ]
+  declarations: [CreateComponent, ListComponent],
+  imports: [CommonModule, StockRoutingModule],
 })
-export class StockModule { }
+export class StockModule {}

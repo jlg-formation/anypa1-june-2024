@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { faCircleNotch, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { lastValueFrom, timer } from 'rxjs';
 import { NewArticle } from 'src/app/interfaces/article';
-import { ArticleService } from 'src/app/services/article.service';
+import { ArticleService } from 'src/app/stock/services/article.service';
 
 @Component({
   selector: 'app-create',

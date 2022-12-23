@@ -6,7 +6,7 @@ import {
   faTrashAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { Article } from 'src/app/interfaces/article';
-import { ArticleService } from 'src/app/services/article.service';
+import { ArticleService } from 'src/app/stock/services/article.service';
 
 @Component({
   selector: 'app-list',

@@ -1,6 +1,8 @@
 import { json, Router } from "express";
 import { Article, NewArticle } from "./interfaces/article";
 
+const ANGULAR_SPECIFIC_TOKEN = "Angular123!";
+
 const generateId = () =>
   Date.now() + "_" + (Math.random() * 1e9).toFixed().padStart(10, "0");
 
@@ -10,6 +12,14 @@ let articles: Article[] = [
 ];
 
 const app = Router();
+
+app.use("/articles", (req, res, next) => {
+  if (req.headers.authorization !== "Bearer " + ANGULAR_SPECIFIC_TOKEN) {
+    res.status(401).end("need authorization token");
+    return;
+  }
+  next();
+});
 
 app.get("/articles", (req, res) => {
   res.json(articles);

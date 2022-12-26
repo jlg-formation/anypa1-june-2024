@@ -14,15 +14,15 @@
 
 ### Add the lazy loading for the stock list and stock create
 
+### Remove the zone.js (branch)
+
 ### Interceptor: Add an authentication Bearer token
 
-### Remove the zone.js (branch)
+### Upgrade the project in the latest angular version
 
 ### Add a linter
 
 ### Make unit testing do not fail.
-
-### Upgrade the project in the latest angular version
 
 ### Replace the theming by Angular Material
 

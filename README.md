@@ -12,11 +12,11 @@
 
 ### Remove the CORS and use a proxy and remove url config
 
+### Add the lazy loading for the stock list and stock create
+
 ### Add a linter
 
 ### Make unit testing do not fail.
-
-### Add the lazy loading for the stock list and stock create
 
 ### Remove the zone.js
 

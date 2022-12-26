@@ -24,13 +24,28 @@
 
 ### Make unit testing do not fail.
 
-### Replace the theming by Angular Material
+### Include Angular Material components in the theming
+
+- Replace FontAwesome icon by Angular Material one.
+- Replace buttons by Angular Material buttons
+- Replace the table by an Angular Material grid
+- Replace the field by Angular Material input fields
+
+### Refactor to use the formbuilder
+
+### Add Async custom validator
+
+- Add automatic completion suggestion
 
 ### Add some error management in the form
 
 ### Add some PWA aspects
 
 ### Do the unit testing using HttpController
+
+### Do the unit testing with spies
+
+### Add coverage to the unit testing
 
 ### Do the e2e testing with Cypress
 

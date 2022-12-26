@@ -1,11 +1,10 @@
-import { enableProdMode } from '@angular/core';
+declare const ngDevMode: boolean;
+
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
-import { environment } from './environments/environment';
 
-if (environment.production) {
-  enableProdMode();
+if (ngDevMode === false) {
   console.log = () => {};
 }
 

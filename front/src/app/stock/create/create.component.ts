@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { faCircleNotch, faPlus } from '@fortawesome/free-solid-svg-icons';
@@ -11,7 +11,7 @@ import { ArticleService } from 'src/app/stock/services/article.service';
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss'],
 })
-export class CreateComponent implements OnInit {
+export class CreateComponent {
   errorMsg = '';
   f = new FormGroup({
     name: new FormControl('Truc', [Validators.required]),
@@ -27,8 +27,6 @@ export class CreateComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {}
-
-  ngOnInit(): void {}
 
   async submit() {
     try {

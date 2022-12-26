@@ -11,8 +11,6 @@ const ANGULAR_SPECIFIC_TOKEN = 'Angular123!';
 
 @Injectable()
 export class AuthorizationInterceptor implements HttpInterceptor {
-  constructor() {}
-
   intercept(
     request: HttpRequest<unknown>,
     next: HttpHandler

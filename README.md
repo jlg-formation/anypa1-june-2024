@@ -8,6 +8,8 @@
 
 ### Remove the console.log in production
 
+### Add a URL Rewriting for production
+
 ### Add a linter
 
 ### Make unit testing do not fail.

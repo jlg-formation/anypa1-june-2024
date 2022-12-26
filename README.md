@@ -14,11 +14,11 @@
 
 ### Add the lazy loading for the stock list and stock create
 
+### Remove the zone.js (branch)
+
 ### Add a linter
 
 ### Make unit testing do not fail.
-
-### Remove the zone.js
 
 ### Upgrade the project in the latest angular version
 

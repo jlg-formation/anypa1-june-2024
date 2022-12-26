@@ -6,11 +6,11 @@
 
 ### Move ArticleService in StockModule
 
+### Remove the console.log in production
+
 ### Add a linter
 
 ### Make unit testing do not fail.
-
-### Remove the console.log
 
 ### Remove the CORS and use a proxy and remove url config
 

@@ -2,7 +2,7 @@
 
 @include mat.core();
 
-$my-primary: mat.define-palette(mat.$lime-palette, 500);
+$my-primary: mat.define-palette(mat.$lime-palette, 900);
 $my-accent: mat.define-palette(mat.$brown-palette, A200, A100, A400);
 $my-gray: mat.define-palette(mat.$gray-palette, A200, A100, A400);
 

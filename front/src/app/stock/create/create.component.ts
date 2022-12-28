@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { lastValueFrom, timer } from 'rxjs';
 import { NewArticle } from 'src/app/interfaces/article';
@@ -12,20 +17,18 @@ import { ArticleService } from 'src/app/stock/services/article.service';
 })
 export class CreateComponent {
   errorMsg = '';
-  f = new FormGroup({
-    name: new FormControl('Truc', [
-      Validators.required,
-      Validators.minLength(3),
-    ]),
-    price: new FormControl(0, [Validators.required]),
-    qty: new FormControl(1, [Validators.required]),
+  f = this.fb.group({
+    name: ['Truc', [Validators.required, Validators.minLength(3)]],
+    price: [0, [Validators.required, Validators.min(0)]],
+    qty: [1, [Validators.required, Validators.min(0)]],
   });
   isAdding = false;
 
   constructor(
     private articleService: ArticleService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private fb: FormBuilder
   ) {}
 
   async submit() {

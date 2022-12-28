@@ -37,9 +37,9 @@
 
 ### Remove Font awesome
 
-### Make unit testing do not fail.
-
 ### Refactor to use the formbuilder
+
+### Make unit testing do not fail.
 
 ### Add Async custom validator
 

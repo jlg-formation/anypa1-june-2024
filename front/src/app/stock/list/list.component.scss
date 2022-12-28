@@ -18,51 +18,37 @@ div.content {
     gap: 0.3em;
   }
 
-  th {
-    font-weight: bold;
-  }
-
   div.loading {
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  tablexx {
-    border: 0.1em solid #bbb;
 
-    // recipe for border-radius
-    border-radius: 0.3em;
-    border-collapse: separate;
-    border-spacing: 0;
-    overflow: hidden;
-
-    th,
-    td {
-      padding: 0.5em 1em;
+  tr[mat-header-row] {
+    background-color: #bbb;
+    th {
+      font-weight: bold;
     }
-    thead {
-      background-color: #bbb;
+  }
+  tr[mat-row] {
+    &:nth-child(even) {
+      background-color: #eee;
     }
-    tbody {
-      tr:nth-child(even) {
-        background-color: #eee;
-      }
 
-      cursor: pointer;
+    cursor: pointer;
 
-      tr:hover {
-        background-color: #ddd;
-      }
+    &:hover {
+      background-color: #ddd;
+    }
 
-      tr.selected {
-        background-color: #ccc;
-      }
+    &.selected {
+      background-color: #ccc;
+    }
 
-      .price,
-      .qty {
-        text-align: right;
-      }
+    .mat-column-price,
+    .mat-column-qty {
+      text-align: right;
     }
   }
 }

@@ -60,8 +60,14 @@
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <tr
+        mat-row
+        *matRowDef="let article; columns: displayedColumns"
+        (click)="select(article)"
+        [class.selected]="selectedArticles.has(article)"
+      ></tr>
     </table>
+
     <ng-template #loadingArticles>
       <div
         class="loading"

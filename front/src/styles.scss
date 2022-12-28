@@ -30,7 +30,7 @@ html,
 body {
   height: 100%;
 }
-body {
+body.mat-typography {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font: 400 16px/20px Roboto, sans-serif;
 }

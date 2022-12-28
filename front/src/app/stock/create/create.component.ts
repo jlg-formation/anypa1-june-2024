@@ -14,7 +14,10 @@ import { ArticleService } from 'src/app/stock/services/article.service';
 export class CreateComponent {
   errorMsg = '';
   f = new FormGroup({
-    name: new FormControl('Truc', [Validators.required]),
+    name: new FormControl('Truc', [
+      Validators.required,
+      Validators.minLength(3),
+    ]),
     price: new FormControl(0, [Validators.required]),
     qty: new FormControl(1, [Validators.required]),
   });

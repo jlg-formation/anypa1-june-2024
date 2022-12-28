@@ -18,7 +18,11 @@
       <span *ngIf="errorMsg">Erreur : {{ errorMsg }}</span>
     </div>
     <div class="buttons">
-      <button mat-flat-button color="primary" [disabled]="isAdding">
+      <button
+        mat-flat-button
+        color="primary"
+        [disabled]="f.invalid || isAdding"
+      >
         <mat-icon *ngIf="!isAdding">add</mat-icon>
         <mat-icon *ngIf="isAdding">
           <mat-spinner [diameter]="16"></mat-spinner>

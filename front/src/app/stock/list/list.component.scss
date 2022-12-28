@@ -25,30 +25,33 @@ div.content {
     justify-content: center;
   }
 
-  tr[mat-header-row] {
-    background-color: #bbb;
-    th {
-      font-weight: bold;
+  table.mat-mdc-table {
+    border: 1px solid #bbb;
+    tr.mat-mdc-header-row {
+      background-color: #bbb;
+      th {
+        font-weight: bold;
+      }
     }
-  }
-  tr[mat-row] {
-    &:nth-child(even) {
-      background-color: #eee;
-    }
+    tr.mat-mdc-row {
+      &:nth-child(even) {
+        background-color: #eee;
+      }
 
-    cursor: pointer;
+      cursor: pointer;
 
-    &:hover {
-      background-color: #ddd;
-    }
+      &:hover {
+        background-color: #ddd;
+      }
 
-    &.selected {
-      background-color: #ccc;
-    }
+      &.selected {
+        background-color: #ccc;
+      }
 
-    .mat-column-price,
-    .mat-column-qty {
-      text-align: right;
+      .mat-column-price,
+      .mat-column-qty {
+        text-align: right;
+      }
     }
   }
 }

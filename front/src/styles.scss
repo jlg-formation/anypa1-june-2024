@@ -4,10 +4,7 @@
 
 @import "./scss/button.scss";
 @import "./scss/form.scss";
-
-body {
-  font-family: sans-serif;
-}
+@import "./scss/font.scss";
 
 main {
   display: flex;
@@ -29,5 +26,11 @@ main {
   }
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

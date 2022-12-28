@@ -5,22 +5,28 @@
       <span *ngIf="errorMsg">Erreur: {{ errorMsg }}</span>
     </div>
     <nav>
-      <button title="Rafraîchir" (click)="refresh()" [disabled]="isRefreshing">
-        <fa-icon [icon]="faRotateRight" [spin]="isRefreshing"></fa-icon>
-      </button>
-      <a routerLink="create" class="button" title="Ajouter">
-        <fa-icon [icon]="faPlus"></fa-icon>
-      </a>
       <button
+        mat-icon-button
+        title="Rafraîchir"
+        (click)="refresh()"
+        [disabled]="isRefreshing"
+        [class.spinner]="isRefreshing"
+      >
+        <mat-icon *ngIf="!isRefreshing">refresh</mat-icon>
+      </button>
+      <a mat-icon-button routerLink="create" title="Ajouter">
+        <mat-icon>add</mat-icon>
+      </a>
+
+      <button
+        mat-icon-button
         title="Supprimer"
         [hidden]="selectedArticles.size === 0"
         (click)="remove()"
         [disabled]="isRemoving"
+        [class.spinner]="isRemoving"
       >
-        <fa-icon
-          [icon]="isRemoving ? faCircleNotch : faTrashAlt"
-          [spin]="isRemoving"
-        ></fa-icon>
+        <mat-icon *ngIf="!isRemoving" fontSet="outlined">delete</mat-icon>
       </button>
     </nav>
     <table>

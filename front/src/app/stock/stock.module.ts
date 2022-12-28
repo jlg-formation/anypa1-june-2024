@@ -6,6 +6,9 @@ import {
 } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { CreateComponent } from './create/create.component';
@@ -31,6 +34,9 @@ import { StockRoutingModule } from './stock-routing.module';
     FontAwesomeModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MatButtonModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class StockModule {}

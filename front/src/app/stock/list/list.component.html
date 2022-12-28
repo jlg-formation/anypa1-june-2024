@@ -24,9 +24,11 @@
         [hidden]="selectedArticles.size === 0"
         (click)="remove()"
         [disabled]="isRemoving"
-        [class.spinner]="isRemoving"
       >
         <mat-icon *ngIf="!isRemoving" fontSet="outlined">delete</mat-icon>
+        <mat-icon *ngIf="isRemoving">
+          <mat-spinner [diameter]="24"></mat-spinner>
+        </mat-icon>
       </button>
     </nav>
     <table>

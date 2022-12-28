@@ -35,6 +35,8 @@
 
 - do your own custom scss file for theming components.
 
+### Remove Font awesome
+
 ### Make unit testing do not fail.
 
 ### Refactor to use the formbuilder

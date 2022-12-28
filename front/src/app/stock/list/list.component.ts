@@ -1,10 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  faCircleNotch,
-  faPlus,
-  faRotateRight,
-  faTrashAlt,
-} from '@fortawesome/free-solid-svg-icons';
+
 import { Article } from 'src/app/interfaces/article';
 import { ArticleService } from 'src/app/stock/services/article.service';
 
@@ -16,10 +11,6 @@ import { ArticleService } from 'src/app/stock/services/article.service';
 export class ListComponent implements OnInit {
   displayedColumns = ['name', 'price', 'qty'];
   errorMsg = '';
-  faCircleNotch = faCircleNotch;
-  faPlus = faPlus;
-  faRotateRight = faRotateRight;
-  faTrashAlt = faTrashAlt;
   isRefreshing = false;
   isRemoving = false;
   selectedArticles = new Set<Article>();

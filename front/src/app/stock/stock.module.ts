@@ -12,7 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { CreateComponent } from './create/create.component';
 import { AuthorizationInterceptor } from './interceptors/authorization.interceptor';
@@ -34,7 +33,6 @@ import { StockRoutingModule } from './stock-routing.module';
   imports: [
     CommonModule,
     StockRoutingModule,
-    FontAwesomeModule,
     ReactiveFormsModule,
     HttpClientModule,
     MatButtonModule,

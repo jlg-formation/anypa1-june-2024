@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { faCircleNotch, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { lastValueFrom, timer } from 'rxjs';
 import { NewArticle } from 'src/app/interfaces/article';
 import { ArticleService } from 'src/app/stock/services/article.service';
@@ -21,8 +20,6 @@ export class CreateComponent {
     price: new FormControl(0, [Validators.required]),
     qty: new FormControl(1, [Validators.required]),
   });
-  faCircleNotch = faCircleNotch;
-  faPlus = faPlus;
   isAdding = false;
 
   constructor(

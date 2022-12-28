@@ -31,6 +31,10 @@
 - Replace the table by an Angular Material grid
 - Replace the field by Angular Material input fields
 
+### Custom theme in Angular Material
+
+- do your own custom scss file for theming components.
+
 ### Make unit testing do not fail.
 
 ### Refactor to use the formbuilder

@@ -1,27 +1,28 @@
 <main>
-  <h1>Ajoute un article</h1>
+  <h1>Ajouter un article</h1>
   <form [formGroup]="f" (ngSubmit)="submit()">
-    <label>
-      <span>Nom</span>
-      <input type="text" formControlName="name" />
-    </label>
-    <label>
-      <span>Prix</span>
-      <input type="number" formControlName="price" />
-    </label>
-    <label>
-      <span>Quantité</span>
-      <input type="number" formControlName="qty" />
-    </label>
+    <mat-form-field>
+      <mat-label>Nom</mat-label>
+      <input matInput formControlName="name" />
+      <mat-hint>Entrer au moins 3 caractères</mat-hint>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Prix</mat-label>
+      <input matInput formControlName="price" type="number" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Quantité</mat-label>
+      <input matInput formControlName="qty" type="number" />
+    </mat-form-field>
     <div class="error">
       <span *ngIf="errorMsg">Erreur : {{ errorMsg }}</span>
     </div>
     <div class="buttons">
-      <button class="primary" [disabled]="isAdding">
-        <fa-icon
-          [icon]="isAdding ? faCircleNotch : faPlus"
-          [spin]="isAdding"
-        ></fa-icon>
+      <button mat-flat-button color="primary" [disabled]="isAdding">
+        <mat-icon *ngIf="!isAdding">add</mat-icon>
+        <mat-icon *ngIf="isAdding">
+          <mat-spinner [diameter]="16"></mat-spinner>
+        </mat-icon>
         <span>Ajouter</span>
       </button>
     </div>

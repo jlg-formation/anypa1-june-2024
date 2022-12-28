@@ -22,6 +22,8 @@
 
 ### Add a linter
 
+### Add a custom title to every page
+
 ### Make unit testing do not fail.
 
 ### Include Angular Material components in the theming

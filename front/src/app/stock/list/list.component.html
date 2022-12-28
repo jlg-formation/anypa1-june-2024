@@ -7,20 +7,27 @@
     <nav>
       <button
         mat-icon-button
-        title="Rafraîchir"
+        aria-label="Rafraîchir"
+        matTooltip="Rafraîchir"
         (click)="refresh()"
         [disabled]="isRefreshing"
         [class.spinner]="isRefreshing"
       >
         <mat-icon *ngIf="!isRefreshing">refresh</mat-icon>
       </button>
-      <a mat-icon-button routerLink="create" title="Ajouter">
+      <a
+        mat-icon-button
+        routerLink="create"
+        aria-label="Ajouter"
+        matTooltip="Ajouter"
+      >
         <mat-icon>add</mat-icon>
       </a>
 
       <button
         mat-icon-button
-        title="Supprimer"
+        aria-label="Supprimer"
+        matTooltip="Supprimer"
         [hidden]="selectedArticles.size === 0"
         (click)="remove()"
         [disabled]="isRemoving"

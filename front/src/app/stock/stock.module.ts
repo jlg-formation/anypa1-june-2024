@@ -12,12 +12,26 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
+import {
+  MatTooltipDefaultOptions,
+  MatTooltipModule,
+  MAT_TOOLTIP_DEFAULT_OPTIONS,
+} from '@angular/material/tooltip';
 
 import { CreateComponent } from './create/create.component';
 import { AuthorizationInterceptor } from './interceptors/authorization.interceptor';
 import { ListComponent } from './list/list.component';
 import { ArticleService } from './services/article.service';
 import { StockRoutingModule } from './stock-routing.module';
+
+console.log('MAT_TOOLTIP_DEFAULT_OPTIONS: ', MAT_TOOLTIP_DEFAULT_OPTIONS);
+
+const matTooltipDefaultOptions: MatTooltipDefaultOptions = {
+  position: 'above',
+  hideDelay: 0,
+  showDelay: 300,
+  touchendHideDelay: 1000,
+};
 
 @NgModule({
   declarations: [CreateComponent, ListComponent],
@@ -29,6 +43,10 @@ import { StockRoutingModule } from './stock-routing.module';
       multi: true,
     },
     HttpClient,
+    {
+      provide: MAT_TOOLTIP_DEFAULT_OPTIONS,
+      useValue: matTooltipDefaultOptions,
+    },
   ],
   imports: [
     CommonModule,
@@ -41,6 +59,7 @@ import { StockRoutingModule } from './stock-routing.module';
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
+    MatTooltipModule,
   ],
 })
 export class StockModule {}

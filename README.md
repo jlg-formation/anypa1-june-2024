@@ -24,14 +24,14 @@
 
 ### Add a custom title to every page
 
-### Make unit testing do not fail.
-
 ### Include Angular Material components in the theming
 
 - Replace FontAwesome icon by Angular Material one.
 - Replace buttons by Angular Material buttons
 - Replace the table by an Angular Material grid
 - Replace the field by Angular Material input fields
+
+### Make unit testing do not fail.
 
 ### Refactor to use the formbuilder
 

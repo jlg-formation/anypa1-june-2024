@@ -17,7 +17,18 @@ div.content {
 
     gap: 0.3em;
   }
-  table {
+
+  th {
+    font-weight: bold;
+  }
+
+  div.loading {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  tablexx {
     border: 0.1em solid #bbb;
 
     // recipe for border-radius

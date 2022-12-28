@@ -14,14 +14,15 @@ import { ArticleService } from 'src/app/stock/services/article.service';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
+  displayedColumns = ['name', 'price', 'qty'];
+  errorMsg = '';
   faCircleNotch = faCircleNotch;
   faPlus = faPlus;
   faRotateRight = faRotateRight;
   faTrashAlt = faTrashAlt;
   isRefreshing = false;
-  selectedArticles = new Set<Article>();
   isRemoving = false;
-  errorMsg = '';
+  selectedArticles = new Set<Article>();
 
   constructor(public articleService: ArticleService) {}
 

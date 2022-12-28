@@ -31,40 +31,49 @@
         </mat-icon>
       </button>
     </nav>
-    <table>
-      <thead>
-        <tr>
-          <th class="name">Nom</th>
-          <th class="price">Prix</th>
-          <th class="qty">Quantité</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngIf="articleService.articles === undefined; else showArticles">
-          <td
-            colspan="3"
-            *ngIf="articleService.errorMsg === ''; else showError"
-          >
-            Loading...
-          </td>
-          <ng-template #showError>
-            <td colspan="3">
-              <strong> Erreur: {{ articleService.errorMsg }} </strong>
-            </td>
-          </ng-template>
-        </tr>
-        <ng-template #showArticles>
-          <tr
-            *ngFor="let a of articleService.articles"
-            [class.selected]="selectedArticles.has(a)"
-            (click)="select(a)"
-          >
-            <td class="name">{{ a.name }}</td>
-            <td class="price">{{ a.price }} €</td>
-            <td class="qty">{{ a.qty }}</td>
-          </tr>
-        </ng-template>
-      </tbody>
+
+    <table
+      *ngIf="articleService.articles; else loadingArticles"
+      mat-table
+      [dataSource]="articleService.articles"
+      class="mat-elevation-z1"
+    >
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nom</th>
+        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+      </ng-container>
+
+      <!-- Price Column -->
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef>Prix</th>
+        <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+      </ng-container>
+
+      <!-- Quantity Column -->
+      <ng-container matColumnDef="qty">
+        <th mat-header-cell *matHeaderCellDef>Quantité</th>
+        <td mat-cell *matCellDef="let element">{{ element.qty }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
     </table>
+    <ng-template #loadingArticles>
+      <div
+        class="loading"
+        *ngIf="articleService.errorMsg === ''; else showError"
+      >
+        <mat-spinner [diameter]="24"></mat-spinner>
+      </div>
+      <ng-template #showError>
+        <div class="error">
+          <strong> Erreur: {{ articleService.errorMsg }} </strong>
+        </div>
+      </ng-template>
+    </ng-template>
   </div>
 </main>

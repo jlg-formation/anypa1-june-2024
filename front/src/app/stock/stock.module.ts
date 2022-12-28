@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatTableModule } from '@angular/material/table';
 
 import { CreateComponent } from './create/create.component';
 import { AuthorizationInterceptor } from './interceptors/authorization.interceptor';
@@ -37,6 +38,7 @@ import { StockRoutingModule } from './stock-routing.module';
     MatButtonModule,
     MatIconModule,
     MatProgressSpinnerModule,
+    MatTableModule,
   ],
 })
 export class StockModule {}

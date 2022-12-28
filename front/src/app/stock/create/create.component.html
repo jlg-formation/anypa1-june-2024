@@ -1,6 +1,6 @@
 <main>
   <h1>Ajouter un article</h1>
-  <form [formGroup]="f" (ngSubmit)="submit()">
+  <form [formGroup]="f" (ngSubmit)="submit()" autocomplete="off">
     <mat-form-field>
       <mat-label>Nom</mat-label>
       <input matInput formControlName="name" />

@@ -7,12 +7,12 @@ const routes: Routes = [
   {
     path: '',
     component: ListComponent,
-    title: 'Gestion Stock: Liste des articles',
+    title: 'Liste des articles',
   },
   {
     path: 'create',
     component: CreateComponent,
-    title: "Gestion Stock: Ajout d'un article",
+    title: "Ajout d'un article",
   },
 ];
 

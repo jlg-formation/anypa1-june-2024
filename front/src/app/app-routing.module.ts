@@ -1,14 +1,20 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import {
+  PreloadAllModules,
+  RouterModule,
+  Routes,
+  TitleStrategy,
+} from '@angular/router';
 import { HomeComponent } from './routes/home/home.component';
 import { LegalComponent } from './routes/legal/legal.component';
+import { PrefixTitleStrategyService } from './services/prefix-title-strategy.service';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent, title: 'Gestion Stock : Accueil' },
+  { path: '', component: HomeComponent, title: 'Accueil' },
   {
     path: 'legal',
     component: LegalComponent,
-    title: 'Gestion Stock : Mentions Légales',
+    title: 'Mentions Légales',
   },
   {
     path: 'stock',
@@ -23,5 +29,11 @@ const routes: Routes = [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
   exports: [RouterModule],
+  providers: [
+    {
+      provide: TitleStrategy,
+      useClass: PrefixTitleStrategyService,
+    },
+  ],
 })
 export class AppRoutingModule {}

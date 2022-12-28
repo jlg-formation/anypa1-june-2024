@@ -42,6 +42,7 @@
 ### Use Angular Material tooltip
 
 - Provide custom default options for tooltip.
+- Check with Lighthouse
 
 ### Make unit testing do not fail.
 

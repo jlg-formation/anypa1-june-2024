@@ -56,9 +56,13 @@
 
 ### Handle right error message for fields
 
-### Make unit testing do not fail.
+### Autocorrect input field
 
-### Add some error management in the form
+- qty example: should be always an integer.
+
+### Internationalize an application
+
+### Make unit testing do not fail.
 
 ### Add some PWA aspects
 

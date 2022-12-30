@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './legal.component.html',
   styleUrls: ['./legal.component.scss'],
 })
-export class LegalComponent {}
+export class LegalComponent {
+  now = new Date();
+}

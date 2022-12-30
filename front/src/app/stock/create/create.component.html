@@ -3,8 +3,16 @@
   <form [formGroup]="f" (ngSubmit)="submit()" autocomplete="off">
     <mat-form-field>
       <mat-label>Nom</mat-label>
-      <input matInput formControlName="name" />
+      <input matInput formControlName="name" [matAutocomplete]="auto" />
       <mat-hint>Entrer au moins 3 caractères</mat-hint>
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let option of filteredOptions | async"
+          [value]="option"
+        >
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
     <mat-form-field>
       <mat-label>Prix</mat-label>

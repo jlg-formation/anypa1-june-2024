@@ -44,11 +44,11 @@
 - Provide custom default options for tooltip.
 - Check with Lighthouse
 
-### Make unit testing do not fail.
+### Add autocompletion on name
 
 ### Add Async custom validator
 
-- Add automatic completion suggestion
+### Make unit testing do not fail.
 
 ### Add some error management in the form
 

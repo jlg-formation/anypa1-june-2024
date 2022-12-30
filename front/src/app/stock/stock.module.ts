@@ -17,6 +17,7 @@ import {
   MatTooltipModule,
   MAT_TOOLTIP_DEFAULT_OPTIONS,
 } from '@angular/material/tooltip';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { CreateComponent } from './create/create.component';
 import { AuthorizationInterceptor } from './interceptors/authorization.interceptor';
@@ -60,6 +61,7 @@ const matTooltipDefaultOptions: MatTooltipDefaultOptions = {
     MatFormFieldModule,
     MatInputModule,
     MatTooltipModule,
+    MatAutocompleteModule,
   ],
 })
 export class StockModule {}

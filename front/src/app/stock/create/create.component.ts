@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
   delay,
+  distinctUntilChanged,
   lastValueFrom,
   map,
   Observable,
@@ -56,6 +57,17 @@ export class CreateComponent {
         );
       })
     );
+
+    this.f.controls.qty.valueChanges
+      .pipe(
+        distinctUntilChanged(),
+        map((value) => {
+          return Math.floor(value);
+        })
+      )
+      .subscribe((value) => {
+        this.f.controls.qty.setValue(value);
+      });
   }
 
   async submit() {

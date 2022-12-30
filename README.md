@@ -52,6 +52,7 @@
 ### Add Async custom validator
 
 - use async call to check forbidden value
+- debounce the async validator
 
 ### Make unit testing do not fail.
 

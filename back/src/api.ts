@@ -47,7 +47,7 @@ app.get("/options/articleNames", (req, res) => {
 
 app.post("/forbiddenValues", (req, res) => {
   const value: string = req.body.value;
-  if (["bad", "stuff"].includes(value)) {
+  if (["bad", "stuff"].includes(value.toLowerCase())) {
     res.json({ result: false, message: "bad word" });
     return;
   }

@@ -12,7 +12,7 @@ export class PrefixTitleStrategyService extends TitleStrategy {
   updateTitle(snapshot: RouterStateSnapshot): void {
     const title = this.buildTitle(snapshot);
     if (title !== undefined) {
-      this.title.setTitle(`Gestion Stock : ${title}`);
+      this.title.setTitle($localize`Gestion Stock : ${title}`);
     }
   }
 }

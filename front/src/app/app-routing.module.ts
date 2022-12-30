@@ -14,13 +14,13 @@ const routes: Routes = [
   {
     path: 'legal',
     component: LegalComponent,
-    title: 'Mentions Légales',
+    title: $localize`Mentions Légales`,
   },
   {
     path: 'stock',
     loadChildren: () =>
       import('./stock/stock.module').then((m) => m.StockModule),
-    title: 'Gestion Stock: Stock',
+    title: $localize`Gestion Stock: Stock`,
   },
 ];
 

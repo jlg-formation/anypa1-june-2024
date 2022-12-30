@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { AbstractControl, AsyncValidatorFn } from '@angular/forms';
-import { lastValueFrom, switchMap, timer } from 'rxjs';
+import { delay, lastValueFrom, of, switchMap, timer } from 'rxjs';
 
 export const backEndValidator = (
   url: string,
@@ -8,14 +8,15 @@ export const backEndValidator = (
 ): AsyncValidatorFn => {
   console.log('url: ', url);
   return (control: AbstractControl) => {
-    return timer(500).pipe(
-      switchMap(async () => {
+    return of(control.value).pipe(
+      delay(500),
+      switchMap(async (value) => {
         console.log('control: ', control.value);
         try {
           await lastValueFrom(timer(2000));
           const json = await lastValueFrom(
             http.post<{ result: boolean; message: string }>(url, {
-              value: control.value,
+              value,
             })
           );
           if (!json.result) {

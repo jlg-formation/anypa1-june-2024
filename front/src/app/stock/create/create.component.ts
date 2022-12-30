@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { lastValueFrom, map, Observable, startWith, timer } from 'rxjs';
+import { lastValueFrom, map, Observable, timer } from 'rxjs';
 import { NewArticle } from 'src/app/interfaces/article';
 import { ArticleService } from 'src/app/stock/services/article.service';
 
@@ -30,7 +30,9 @@ export class CreateComponent {
     this.filteredOptions = this.f.controls.name.valueChanges.pipe(
       map((name) => {
         console.log('name: ', name);
-        return this.options.filter((opts) => opts.startsWith(name));
+        return this.options.filter((opts) =>
+          opts.toLowerCase().includes(name.toLowerCase())
+        );
       })
     );
   }

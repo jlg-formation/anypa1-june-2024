@@ -54,6 +54,8 @@
 - use async call to check forbidden value
 - debounce the async validator
 
+### Handle right error message for fields
+
 ### Make unit testing do not fail.
 
 ### Add some error management in the form

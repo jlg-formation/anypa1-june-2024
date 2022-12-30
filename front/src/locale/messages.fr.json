@@ -1,0 +1,20 @@
+{
+  "locale": "fr-FR",
+  "translations": {
+    "7390338440019085105": "Mentions Légales",
+    "6493354955099828399": "Gestion Stock: Stock",
+    "9004589998831946330": "Gérer efficacement votre stock !",
+    "2803179909655116312": "Voir le stock",
+    "5483132539467697455": "Aujourd'hui nous sommes le : ",
+    "4757938036377851081": "Gestion Stock : {$PH}",
+    "293493888957095272": "Ajouter un article",
+    "5363451304863092478": "Nom",
+    "112341503084835": "Prix",
+    "7013342739706915791": "Quantité",
+    "70397346439942337": "Ajouter",
+    "4100383216880399049": "Liste des articles",
+    "5804842311240191977": "Erreur : ",
+    "1778532019458885303": "Rafraîchir",
+    "180879386399550529": "Supprimer"
+  }
+}

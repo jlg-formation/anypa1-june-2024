@@ -45,4 +45,13 @@ app.get("/options/articleNames", (req, res) => {
   res.json(["Tournevis", "Pelle", "Marteau", "Rateau"]);
 });
 
+app.post("/forbiddenValues", (req, res) => {
+  const value: string = req.body.value;
+  if (["bad", "stuff"].includes(value)) {
+    res.json({ result: false, message: "bad word" });
+    return;
+  }
+  res.json({ result: true });
+});
+
 export const api = app;

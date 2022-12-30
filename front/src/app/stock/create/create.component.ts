@@ -12,6 +12,7 @@ import {
   timer,
 } from 'rxjs';
 import { NewArticle } from 'src/app/interfaces/article';
+import { backEndValidator } from 'src/app/misc';
 import { ArticleService } from 'src/app/stock/services/article.service';
 
 @Component({
@@ -22,7 +23,11 @@ import { ArticleService } from 'src/app/stock/services/article.service';
 export class CreateComponent {
   errorMsg = '';
   f = this.fb.nonNullable.group({
-    name: ['Truc', [Validators.required, Validators.minLength(3)]],
+    name: [
+      'Truc',
+      [Validators.required, Validators.minLength(3)],
+      [backEndValidator('/api/forbiddenValues', this.http)],
+    ],
     price: [0, [Validators.required, Validators.min(0)]],
     qty: [1, [Validators.required, Validators.min(0)]],
   });

@@ -46,7 +46,12 @@
 
 ### Add autocompletion on name
 
+- use back-end to retrieve the list of options (asynchrone autocomplete)
+- do only one call to the back-end
+
 ### Add Async custom validator
+
+- use async call to check forbidden value
 
 ### Make unit testing do not fail.
 

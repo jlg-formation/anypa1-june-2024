@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:stats": "ng build --stats-json",
-    "analyze": "webpack-bundle-analyzer dist/front/stats.json",
+    "analyze": "webpack-bundle-analyzer dist/front/en-US/stats.json",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint"

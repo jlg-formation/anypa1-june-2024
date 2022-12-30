@@ -1,10 +1,10 @@
 {
-  "locale": "fr-FR",
+  "locale": "en-US",
   "translations": {
     "7390338440019085105": "Legal",
     "6493354955099828399": "Gestion Stock: Stock",
     "9004589998831946330": "Just manage your stock !",
-    "2803179909655116312": "CHeck the stock",
+    "2803179909655116312": "Check the stock",
     "5483132539467697455": "Today is : ",
     "4757938036377851081": "Gestion Stock : {$PH}",
     "293493888957095272": "Add an article",

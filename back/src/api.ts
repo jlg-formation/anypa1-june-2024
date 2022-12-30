@@ -41,4 +41,8 @@ app.delete("/articles", (req, res) => {
   res.status(204).end();
 });
 
+app.get("/options/articleNames", (req, res) => {
+  res.json(["Tournevis", "Pelle", "Marteau", "Rateau"]);
+});
+
 export const api = app;

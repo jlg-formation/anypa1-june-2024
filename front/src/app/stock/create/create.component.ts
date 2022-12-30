@@ -1,7 +1,16 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { lastValueFrom, map, Observable, timer } from 'rxjs';
+import {
+  delay,
+  lastValueFrom,
+  map,
+  Observable,
+  ReplaySubject,
+  switchMap,
+  timer,
+} from 'rxjs';
 import { NewArticle } from 'src/app/interfaces/article';
 import { ArticleService } from 'src/app/stock/services/article.service';
 
@@ -19,19 +28,26 @@ export class CreateComponent {
   });
   filteredOptions: Observable<string[]>;
   isAdding = false;
-  options: string[] = ['Tournevis', 'Pelle', 'Marteau', 'Rateau'];
+  options$ = new ReplaySubject<string[]>(1);
 
   constructor(
     private articleService: ArticleService,
     private router: Router,
     private route: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private http: HttpClient
   ) {
+    this.http
+      .get<string[]>('/api/options/articleNames')
+      .pipe(delay(2000))
+      .subscribe((opts) => this.options$.next(opts));
     this.filteredOptions = this.f.controls.name.valueChanges.pipe(
-      map((name) => {
+      switchMap((name) => {
         console.log('name: ', name);
-        return this.options.filter((opts) =>
-          opts.toLowerCase().includes(name.toLowerCase())
+        return this.options$.pipe(
+          map((opts) =>
+            opts.filter((opt) => opt.toLowerCase().includes(name.toLowerCase()))
+          )
         );
       })
     );

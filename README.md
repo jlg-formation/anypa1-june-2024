@@ -62,9 +62,11 @@
 
 ### Internationalize an application
 
-### Make unit testing do not fail.
+### Use Material Design theme property
 
-### Add some PWA aspects
+- custom the header in order to use custom theme properties
+
+### Make unit testing do not fail.
 
 ### Do the unit testing using HttpController
 

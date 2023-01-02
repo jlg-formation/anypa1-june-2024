@@ -26,7 +26,10 @@
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/scss/custom-theme.scss", "src/styles.scss"],
             "scripts": [],
-            "localize": true
+            "localize": true,
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/scss"]
+            }
           },
           "configurations": {
             "production": {

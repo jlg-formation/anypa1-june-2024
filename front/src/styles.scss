@@ -1,10 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-@import "../node_modules/normalize.css/normalize.css";
-@import "../node_modules/sanitize.css/sanitize.css";
+@use "spinner.scss";
+@use "form.scss";
+@use "font.scss";
 
-@import "./scss/spinner.scss";
-@import "./scss/form.scss";
-@import "./scss/font.scss";
+@use "normalize.css/normalize.css";
+@use "sanitize.css/sanitize.css";
 
 main {
   display: flex;

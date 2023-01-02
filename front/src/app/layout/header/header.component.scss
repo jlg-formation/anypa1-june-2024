@@ -1,6 +1,9 @@
+@use "custom-theme";
+
 header {
   height: 3em;
-  background-color: #eee;
+  background-color: custom-theme.$primary-color;
+  color: white;
   display: flex;
   align-items: center;
   padding: 0 0.5em;

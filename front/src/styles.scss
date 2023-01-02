@@ -1,10 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
-@use "spinner.scss";
-@use "form.scss";
-@use "font.scss";
+@use "spinner";
+@use "form";
+@use "font";
 
 @use "normalize.css/normalize.css";
 @use "sanitize.css/sanitize.css";
+
+@use "custom-theme";
 
 main {
   display: flex;

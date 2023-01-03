@@ -44,11 +44,11 @@ describe('ArticleService', () => {
     service
       .load()
       .then(() => {
-        throw 'request must return an error';
-      })
-      .catch(() => {
         expect(service.errorMsg).toEqual('Technical Error');
         done();
+      })
+      .catch(() => {
+        fail('should not go in error');
       });
     const req = httpTestingController.expectOne(url);
     expect(req.request.method).toEqual('GET');
@@ -73,7 +73,7 @@ describe('ArticleService', () => {
     service
       .add(a3)
       .then(() => {
-        throw new Error('should not succeed');
+        fail('request must return an error');
       })
       .catch((err: Error) => {
         expect(err.message).toEqual('Technical Error');
@@ -112,7 +112,8 @@ describe('ArticleService', () => {
       error = err as Error;
     }
     if (error === undefined) {
-      throw new Error('should not succeed');
+      fail('request must return an error');
+      return;
     }
     expect(error.message).toEqual('Technical Error');
   });

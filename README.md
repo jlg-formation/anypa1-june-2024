@@ -74,7 +74,7 @@
 
 ### Do the unit testing using HttpController
 
-### Do the unit testing with spies
+### Do the unit testing with Jasmine Spies
 
 ### Do the e2e testing with Cypress
 

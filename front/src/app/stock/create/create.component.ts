@@ -16,6 +16,8 @@ import { NewArticle } from 'src/app/interfaces/article';
 import { backEndValidator } from 'src/app/misc';
 import { ArticleService } from 'src/app/stock/services/article.service';
 
+export const articleNameUrl = '/api/options/articleNames';
+
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
@@ -32,7 +34,7 @@ export class CreateComponent {
     price: [0, [Validators.required, Validators.min(0)]],
     qty: [1, [Validators.required, Validators.min(0)]],
   });
-  filteredOptions: Observable<string[]>;
+  filteredOptions$: Observable<string[]>;
   isAdding = false;
   options$ = new ReplaySubject<string[]>(1);
 
@@ -44,10 +46,10 @@ export class CreateComponent {
     private http: HttpClient
   ) {
     this.http
-      .get<string[]>('/api/options/articleNames')
+      .get<string[]>(articleNameUrl)
       .pipe(delay(2000))
       .subscribe((opts) => this.options$.next(opts));
-    this.filteredOptions = this.f.controls.name.valueChanges.pipe(
+    this.filteredOptions$ = this.f.controls.name.valueChanges.pipe(
       switchMap((name) => {
         console.log('name: ', name);
         return this.options$.pipe(

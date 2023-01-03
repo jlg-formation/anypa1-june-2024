@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, delay, lastValueFrom, switchMap, timer } from 'rxjs';
+import { catchError, delay, lastValueFrom } from 'rxjs';
 import { Article, NewArticle } from '../../interfaces/article';
 
-const url = '/api/articles';
+export const url = '/api/articles';
 
 @Injectable()
 export class ArticleService {
@@ -17,7 +17,7 @@ export class ArticleService {
       this.http.post<void>(url, newArticle).pipe(
         catchError((err) => {
           console.log('err: ', err);
-          throw new Error('Technical error');
+          throw new Error('Technical Error');
         })
       )
     );
@@ -40,17 +40,17 @@ export class ArticleService {
 
   async remove(ids: string[]) {
     await lastValueFrom(
-      timer(1000).pipe(
-        switchMap(() =>
-          this.http.delete<void>(url, {
-            body: ids,
-          })
-        ),
-        catchError((err) => {
-          console.log('err: ', err);
-          throw new Error('Technical error');
+      this.http
+        .delete<void>(url, {
+          body: ids,
         })
-      )
+        .pipe(
+          delay(1000),
+          catchError((err) => {
+            console.log('err: ', err);
+            throw new Error('Technical Error');
+          })
+        )
     );
   }
 }

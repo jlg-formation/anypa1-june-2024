@@ -92,25 +92,28 @@ describe('ArticleService', () => {
         done();
       })
       .catch((err) => {
-        throw new Error('xxx should not get an error: ' + err);
+        throw new Error('should not get an error: ' + err);
       });
     const req = httpTestingController.expectOne(url);
     expect(req.request.method).toEqual('DELETE');
     req.flush(null, { status: 204, statusText: 'No Content' });
   });
 
-  it('should remove in error', (done: DoneFn) => {
-    service
-      .remove(['xxx'])
-      .then(() => {
-        throw new Error('should not succeed');
-      })
-      .catch((err: Error) => {
-        expect(err.message).toEqual('Technical Error');
-        done();
-      });
+  it('should remove in error', async () => {
+    const call = service.remove(['xxx']);
     const req = httpTestingController.expectOne(url);
     expect(req.request.method).toEqual('DELETE');
     req.flush(null, { status: 500, statusText: 'Internal Error' });
+
+    let error: Error | undefined;
+    try {
+      await call;
+    } catch (err) {
+      error = err as Error;
+    }
+    if (error === undefined) {
+      throw new Error('should not succeed');
+    }
+    expect(error.message).toEqual('Technical Error');
   });
 });

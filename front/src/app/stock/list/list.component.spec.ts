@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { StockModule } from '../stock.module';
 
 import { ListComponent } from './list.component';
 
@@ -8,9 +10,9 @@ describe('ListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ListComponent ]
-    })
-    .compileComponents();
+      imports: [StockModule, RouterTestingModule],
+      declarations: [ListComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

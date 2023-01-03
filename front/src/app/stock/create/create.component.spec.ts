@@ -1,4 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
+import { StockModule } from '../stock.module';
 
 import { CreateComponent } from './create.component';
 
@@ -8,9 +11,9 @@ describe('CreateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateComponent ]
-    })
-    .compileComponents();
+      imports: [StockModule, RouterTestingModule, BrowserAnimationsModule],
+      declarations: [CreateComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

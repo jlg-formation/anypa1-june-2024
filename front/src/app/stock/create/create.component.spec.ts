@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import {
   HttpClientTestingModule,
   HttpTestingController,
@@ -6,6 +7,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TestScheduler } from 'rxjs/testing';
+import { NewArticle } from 'src/app/interfaces/article';
+import { ArticleService } from '../services/article.service';
 import { StockModule } from '../stock.module';
 import { articleNameUrl, CreateComponent } from './create.component';
 
@@ -23,6 +26,20 @@ describe('CreateComponent', () => {
         BrowserAnimationsModule,
         HttpClientTestingModule,
       ],
+      providers: [
+        {
+          provide: ArticleService,
+          useValue: {
+            async load() {},
+            async add(newArticle: NewArticle) {
+              if (newArticle.name === 'bad') {
+                throw new Error('bad is forbidden');
+              }
+            },
+            async remove() {},
+          },
+        },
+      ],
       declarations: [CreateComponent],
     }).compileComponents();
 
@@ -32,7 +49,7 @@ describe('CreateComponent', () => {
     });
   });
 
-  beforeEach((done: DoneFn) => {
+  beforeEach(() => {
     testScheduler.run(() => {
       fixture = TestBed.createComponent(CreateComponent);
       const req = httpTestingController.expectOne(articleNameUrl);
@@ -46,8 +63,6 @@ describe('CreateComponent', () => {
       // '|' means observable completes
       testScheduler.createTime('|');
       testScheduler.flush();
-
-      done();
     });
   });
 
@@ -70,7 +85,43 @@ describe('CreateComponent', () => {
       done();
     });
     component.f.controls.name.setValue('Tour');
+  });
 
-    expect(component).toBeTruthy();
+  it('should insure the quantity is an integer', () => {
+    component.f.controls.qty.setValue(3.24);
+    expect(component.f.controls.qty.value).toEqual(3);
+  });
+
+  it('should submit', (done: DoneFn) => {
+    testScheduler.run(() => {
+      component
+        .submit()
+        .then(() => {
+          console.log('submitted');
+          done();
+        })
+        .catch((err) => {
+          console.log('test err: ', err);
+          fail('should not go in error');
+        });
+      testScheduler.createTime('|');
+    });
+  });
+
+  it('should submit in error', (done: DoneFn) => {
+    testScheduler.run(() => {
+      component.f.controls.name.setValue('bad');
+      component
+        .submit()
+        .then(() => {
+          console.log('submitted');
+          done();
+        })
+        .catch((err) => {
+          console.log('test err: ', err);
+          fail('should not go in error');
+        });
+      testScheduler.createTime('|');
+    });
   });
 });

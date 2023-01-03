@@ -81,7 +81,7 @@ export class CreateComponent {
       await this.articleService.load();
       await this.router.navigate(['..'], { relativeTo: this.route });
     } catch (err) {
-      console.log('err: ', err);
+      console.log('submit err: ', err);
       if (err instanceof Error) {
         this.errorMsg = err.message;
       }

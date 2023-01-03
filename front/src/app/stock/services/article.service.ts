@@ -16,7 +16,7 @@ export class ArticleService {
     await lastValueFrom(
       this.http.post<void>(url, newArticle).pipe(
         catchError((err) => {
-          console.log('err: ', err);
+          console.log('http post err: ', err);
           throw new Error('Technical Error');
         })
       )

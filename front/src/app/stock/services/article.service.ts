@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, delay, lastValueFrom } from 'rxjs';
+import { catchError, lastValueFrom } from 'rxjs';
 import { Article, NewArticle } from '../../interfaces/article';
 
 export const url = '/api/articles';
@@ -26,12 +26,9 @@ export class ArticleService {
   async load() {
     try {
       this.errorMsg = '';
-      await this.http
-        .get<Article[]>(url)
-        .pipe(delay(1000))
-        .forEach((articles) => {
-          this.articles = articles;
-        });
+      await this.http.get<Article[]>(url).forEach((articles) => {
+        this.articles = articles;
+      });
     } catch (err) {
       console.log('err: ', err);
       this.errorMsg = 'Technical Error';
@@ -45,7 +42,6 @@ export class ArticleService {
           body: ids,
         })
         .pipe(
-          delay(1000),
           catchError((err) => {
             console.log('err: ', err);
             throw new Error('Technical Error');

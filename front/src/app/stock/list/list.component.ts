@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { lastValueFrom, timer } from 'rxjs';
 
 import { Article } from 'src/app/interfaces/article';
 import { ArticleService } from 'src/app/stock/services/article.service';
@@ -19,7 +20,10 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.articleService.articles === undefined) {
-      this.articleService.load();
+      (async () => {
+        await lastValueFrom(timer(1000));
+        this.articleService.load();
+      })();
     }
   }
 
@@ -27,6 +31,7 @@ export class ListComponent implements OnInit {
     try {
       this.errorMsg = '';
       this.isRefreshing = true;
+      await lastValueFrom(timer(1000));
       await this.articleService.load();
     } catch (err) {
       console.log('err: ', err);
@@ -40,7 +45,9 @@ export class ListComponent implements OnInit {
       this.errorMsg = '';
       this.isRemoving = true;
       const ids = [...this.selectedArticles].map((a) => a.id);
+      await lastValueFrom(timer(1000));
       await this.articleService.remove(ids);
+      await lastValueFrom(timer(1000));
       await this.articleService.load();
       this.selectedArticles.clear();
     } catch (err) {

@@ -75,6 +75,7 @@ export class CreateComponent {
       this.isAdding = true;
       await lastValueFrom(timer(1000));
       await this.articleService.add(this.f.value as NewArticle);
+      await lastValueFrom(timer(1000));
       await this.articleService.load();
       await this.router.navigate(['..'], { relativeTo: this.route });
     } catch (err) {

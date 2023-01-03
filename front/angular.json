@@ -92,7 +92,8 @@
             "stylePreprocessorOptions": {
               "includePaths": ["src/scss"]
             },
-            "karmaConfig": "karma.conf.js"
+            "karmaConfig": "karma.conf.js",
+            "codeCoverage": true
           }
         },
         "lint": {

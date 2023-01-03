@@ -68,11 +68,13 @@
 
 ### Make unit testing do not fail.
 
+- use imports in the testbed. Basically tests are just instantiation of artefacts.
+
+### Add coverage to the unit testing
+
 ### Do the unit testing using HttpController
 
 ### Do the unit testing with spies
-
-### Add coverage to the unit testing
 
 ### Do the e2e testing with Cypress
 

@@ -4,7 +4,12 @@ import {
   HttpTestingController,
 } from '@angular/common/http/testing';
 import { NgZone } from '@angular/core';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick,
+} from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TestScheduler } from 'rxjs/testing';
@@ -95,39 +100,29 @@ describe('CreateComponent', () => {
     expect(component.f.controls.qty.value).toEqual(3);
   });
 
-  it('should submit', (done: DoneFn) => {
-    testScheduler.run(() => {
-      // ngZone is necessary to avoid a warning message with the router.
-      ngZone.run(() => {
-        component
-          .submit()
-          .then(() => {
-            console.log('submitted');
-            done();
-          })
-          .catch((err) => {
-            console.log('test err: ', err);
-            fail('should not go in error');
-          });
-        testScheduler.createTime('|');
+  it('should submit', fakeAsync(() => {
+    // ngZone is necessary to avoid a warning message with the router.
+    ngZone.run(() => {
+      component.submit().catch((err) => {
+        console.log('test err: ', err);
+        fail('should not go in error');
       });
+      tick(2000);
     });
-  });
+  }));
 
-  it('should submit in error', (done: DoneFn) => {
-    testScheduler.run(() => {
-      component.f.controls.name.setValue('bad');
-      component
-        .submit()
-        .then(() => {
-          console.log('submitted');
-          done();
-        })
-        .catch((err) => {
-          console.log('test err: ', err);
-          fail('should not go in error');
-        });
-      testScheduler.createTime('|');
-    });
-  });
+  it('should submit in error', fakeAsync(() => {
+    component.f.controls.name.setValue('bad');
+    component
+      .submit()
+      .then(() => {
+        console.log('submitted');
+      })
+      .catch((err) => {
+        console.log('test err: ', err);
+        fail('should not go in error');
+      });
+    tick(2000);
+    expect(component.errorMsg).toEqual('bad is forbidden');
+  }));
 });

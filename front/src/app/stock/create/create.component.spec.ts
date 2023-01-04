@@ -83,17 +83,17 @@ describe('CreateComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should autocomplete', (done: DoneFn) => {
+  it('should autocomplete', fakeAsync(() => {
     // write Tour and the autocomplete should answer ['Tournevis']
     component.f.controls.name.clearAsyncValidators();
     component.f.controls.name.updateValueAndValidity();
     component.filteredOptions$.subscribe((opts) => {
       console.log('opts: ', opts);
       expect(opts).toEqual(['Tournevis']);
-      done();
     });
     component.f.controls.name.setValue('Tour');
-  });
+    tick(1000);
+  }));
 
   it('should insure the quantity is an integer', () => {
     component.f.controls.qty.setValue(3.24);

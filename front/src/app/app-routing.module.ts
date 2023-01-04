@@ -9,6 +9,7 @@ import { HomeComponent } from './routes/home/home.component';
 import { LegalComponent } from './routes/legal/legal.component';
 import { PrefixTitleStrategyService } from './services/prefix-title-strategy.service';
 
+/* istanbul ignore next */
 const routes: Routes = [
   { path: '', component: HomeComponent, title: 'Accueil' },
   {

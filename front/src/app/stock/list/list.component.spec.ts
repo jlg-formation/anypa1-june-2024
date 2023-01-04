@@ -6,6 +6,7 @@ import {
   tick,
 } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { articles } from 'src/app/test/articles.data';
 import { ArticleService } from '../services/article.service';
 import { StockModule } from '../stock.module';
 
@@ -85,6 +86,11 @@ describe('ListComponent', () => {
       console.log('fake load in error');
       throw new Error('oups...');
     });
+    component.select(articles[0]);
+    // deselect
+    component.select(articles[0]);
+    // reselect
+    component.select(articles[0]);
     component.remove().catch((err) => {
       fail('Should not go here: ' + err);
     });

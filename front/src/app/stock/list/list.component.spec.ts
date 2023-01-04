@@ -17,9 +17,15 @@ describe('ListComponent', () => {
   let articleServiceSpy: jasmine.SpyObj<ArticleService>;
 
   beforeEach(async () => {
-    articleServiceSpy = jasmine.createSpyObj('articleService', ['load']);
+    articleServiceSpy = jasmine.createSpyObj('articleService', [
+      'load',
+      'remove',
+    ]);
     articleServiceSpy.load.and.callFake(async () => {
       console.log('fake load');
+    });
+    articleServiceSpy.remove.and.callFake(async () => {
+      console.log('fake remove');
     });
     await TestBed.configureTestingModule({
       imports: [StockModule, RouterTestingModule],
@@ -35,7 +41,7 @@ describe('ListComponent', () => {
     fixture.detectChanges();
     // this will wait for timer to finish
     tick(2000);
-    console.log('complete');
+    fixture.detectChanges();
   }));
 
   it('should create', () => {
@@ -43,15 +49,47 @@ describe('ListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should refresh', (done: DoneFn) => {
-    component
-      .refresh()
-      .then(() => {
-        expect(articleServiceSpy.load).toHaveBeenCalledTimes(2);
-        done();
-      })
-      .catch((err) => {
-        fail('Should not go here: ' + err);
-      });
-  });
+  it('should refresh', fakeAsync(() => {
+    component.refresh().catch((err) => {
+      fail('Should not go here: ' + err);
+    });
+    tick(2000);
+    fixture.detectChanges();
+    expect(articleServiceSpy.load).toHaveBeenCalledTimes(2);
+  }));
+
+  it('should refresh in error', fakeAsync(() => {
+    articleServiceSpy.load.and.callFake(async () => {
+      console.log('fake load in error');
+      throw new Error('oups...');
+    });
+    component.refresh().catch((err) => {
+      fail('Should not go here: ' + err);
+    });
+    tick(2000);
+    fixture.detectChanges();
+    expect(articleServiceSpy.load).toHaveBeenCalledTimes(2);
+  }));
+
+  it('should remove', fakeAsync(() => {
+    component.remove().catch((err) => {
+      fail('Should not go here: ' + err);
+    });
+    tick(2000);
+    fixture.detectChanges();
+    expect(articleServiceSpy.load).toHaveBeenCalledTimes(2);
+  }));
+
+  it('should remove in error', fakeAsync(() => {
+    articleServiceSpy.load.and.callFake(async () => {
+      console.log('fake load in error');
+      throw new Error('oups...');
+    });
+    component.remove().catch((err) => {
+      fail('Should not go here: ' + err);
+    });
+    tick(2000);
+    fixture.detectChanges();
+    expect(articleServiceSpy.load).toHaveBeenCalledTimes(2);
+  }));
 });

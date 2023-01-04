@@ -9,10 +9,13 @@ export class PrefixTitleStrategyService extends TitleStrategy {
   constructor(private readonly title: Title) {
     super();
   }
+
   updateTitle(snapshot: RouterStateSnapshot): void {
     const title = this.buildTitle(snapshot);
     if (title !== undefined) {
       this.title.setTitle($localize`Gestion Stock : ${title}`);
+      return;
     }
+    this.title.setTitle($localize`Gestion Stock`);
   }
 }

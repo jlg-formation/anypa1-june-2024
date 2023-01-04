@@ -87,6 +87,8 @@
 - accelerate all test by using fakeasync
 - use spies
 
+### Full coverage Unit Test
+
 ### Do the e2e testing with Cypress
 
 ## Author

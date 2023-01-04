@@ -38,8 +38,20 @@ describe('ListComponent', () => {
     console.log('complete');
   }));
 
-  it('should create', fakeAsync(() => {
+  it('should create', () => {
     expect(articleServiceSpy.load).toHaveBeenCalledTimes(1);
     expect(component).toBeTruthy();
-  }));
+  });
+
+  it('should refresh', (done: DoneFn) => {
+    component
+      .refresh()
+      .then(() => {
+        expect(articleServiceSpy.load).toHaveBeenCalledTimes(2);
+        done();
+      })
+      .catch((err) => {
+        fail('Should not go here: ' + err);
+      });
+  });
 });

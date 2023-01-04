@@ -3,6 +3,7 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
+import { NgZone } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -17,6 +18,7 @@ describe('CreateComponent', () => {
   let component: CreateComponent;
   let fixture: ComponentFixture<CreateComponent>;
   let testScheduler: TestScheduler;
+  let ngZone: NgZone;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -47,6 +49,7 @@ describe('CreateComponent', () => {
     testScheduler = new TestScheduler((actual, expected) => {
       expect(actual).toEqual(expected);
     });
+    ngZone = TestBed.inject(NgZone);
   });
 
   beforeEach(() => {
@@ -94,17 +97,20 @@ describe('CreateComponent', () => {
 
   it('should submit', (done: DoneFn) => {
     testScheduler.run(() => {
-      component
-        .submit()
-        .then(() => {
-          console.log('submitted');
-          done();
-        })
-        .catch((err) => {
-          console.log('test err: ', err);
-          fail('should not go in error');
-        });
-      testScheduler.createTime('|');
+      // ngZone is necessary to avoid a warning message with the router.
+      ngZone.run(() => {
+        component
+          .submit()
+          .then(() => {
+            console.log('submitted');
+            done();
+          })
+          .catch((err) => {
+            console.log('test err: ', err);
+            fail('should not go in error');
+          });
+        testScheduler.createTime('|');
+      });
     });
   });
 

@@ -74,6 +74,14 @@
 
 ### Do the unit testing using HttpController
 
+### Do the unit testing for observable using testscheduler
+
+- transform async scenario to sync scenario using rxjs TestScheduler
+
+### Do the unit testing using Dependancy Injection
+
+- mock the article service with fake article service
+
 ### Do the unit testing with Jasmine Spies
 
 ### Do the e2e testing with Cypress

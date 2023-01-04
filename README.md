@@ -82,7 +82,10 @@
 
 - mock the article service with fake article service
 
-### Do the unit testing with Jasmine Spies
+### Do the unit testing with Jasmine Spies and FakeAsync
+
+- accelerate all test by using fakeasync
+- use spies
 
 ### Do the e2e testing with Cypress
 

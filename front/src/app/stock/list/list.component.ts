@@ -22,7 +22,11 @@ export class ListComponent implements OnInit {
     if (this.articleService.articles === undefined) {
       (async () => {
         await lastValueFrom(timer(1000));
-        this.articleService.load();
+        console.log('timer finished');
+
+        await this.articleService.load();
+        console.log('this.articleService: ', this.articleService);
+        console.log('ngOnInit done');
       })();
     }
   }

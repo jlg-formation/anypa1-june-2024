@@ -5,6 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class ToolsService {
   constructor() {
-    console.log('ccc tool service instantiated.');
+    console.log('fff tool service instantiated.');
   }
 }

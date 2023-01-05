@@ -93,6 +93,17 @@
 
 ### Make a monorepo
 
+### Make a common project
+
+- Just make a project that can be used to the back and front
+- Article interface definition
+- GenerateId function
+
+### Make an angular tools library
+
+- write a custom directive autofocus
+- write an ellipsis pipe
+
 ## Author
 
 Jean-Louis GUENEGO @2022

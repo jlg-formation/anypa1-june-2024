@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, lastValueFrom } from 'rxjs';
-import { Article, NewArticle } from '../../interfaces/article';
+import { Article, NewArticle } from '@gestionstock/common';
 
 export const url = '/api/articles';
 

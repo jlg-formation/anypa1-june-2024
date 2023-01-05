@@ -1,10 +1,7 @@
 import { json, Router } from "express";
-import { Article, NewArticle } from "./interfaces/article";
+import { Article, generateId, NewArticle } from "@gestionstock/common";
 
 const ANGULAR_SPECIFIC_TOKEN = "Angular123!";
-
-const generateId = () =>
-  Date.now() + "_" + (Math.random() * 1e9).toFixed().padStart(10, "0");
 
 let articles: Article[] = [
   { id: "a1", name: "Tournevis", price: 2.99, qty: 123 },

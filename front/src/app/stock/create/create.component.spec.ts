@@ -13,7 +13,7 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { TestScheduler } from 'rxjs/testing';
-import { NewArticle } from 'src/app/interfaces/article';
+import { NewArticle } from '@gestionstock/common';
 import { ArticleService } from '../services/article.service';
 import { StockModule } from '../stock.module';
 import { articleNameUrl, CreateComponent } from './create.component';

@@ -2,9 +2,13 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "target": "ESNext",
-    "module": "CommonJS",
+    "module": "ESNext",
     "strict": true,
     "moduleResolution": "Node"
   },
-  "include": ["src"]
+  "include": ["src"],
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  }
 }

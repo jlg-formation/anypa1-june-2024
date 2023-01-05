@@ -1,4 +1,4 @@
-import { Article, NewArticle } from '../interfaces/article';
+import { Article, NewArticle } from '@gestionstock/common';
 
 export const articles: Article[] = [
   { id: 'a1', name: 'Tournevis', price: 2.99, qty: 123 },

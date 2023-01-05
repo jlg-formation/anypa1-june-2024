@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { lastValueFrom, timer } from 'rxjs';
 
-import { Article } from 'src/app/interfaces/article';
+import { Article } from '@gestionstock/common';
 import { ArticleService } from 'src/app/stock/services/article.service';
 
 @Component({

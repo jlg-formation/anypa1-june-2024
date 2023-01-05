@@ -12,7 +12,7 @@ import {
   switchMap,
   timer,
 } from 'rxjs';
-import { NewArticle } from 'src/app/interfaces/article';
+import { NewArticle } from '@gestionstock/common';
 import { backEndValidator } from 'src/app/misc';
 import { ArticleService } from 'src/app/stock/services/article.service';
 

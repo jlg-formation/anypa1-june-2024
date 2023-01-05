@@ -91,6 +91,8 @@
 
 ### Do the e2e testing with Cypress
 
+### Make a monorepo
+
 ## Author
 
 Jean-Louis GUENEGO @2022

@@ -18,7 +18,7 @@
   "homepage": "https://github.com/jlg-formation/any-example#readme",
   "workspaces": [
     "common",
-    "angular-tools",
+    "angular-tools/dist/tools",
     "back",
     "front"
   ],

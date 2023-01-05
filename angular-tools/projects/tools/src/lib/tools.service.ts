@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ToolsService {
-
-  constructor() { }
+  constructor() {
+    console.log('ccc tool service instantiated.');
+  }
 }

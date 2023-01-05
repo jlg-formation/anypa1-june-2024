@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, lastValueFrom } from 'rxjs';
 import { Article, NewArticle } from '@gestionstock/common';
+import { ToolsService } from '@gestionstock/angular-tools';
 
 export const url = '/api/articles';
 
@@ -10,7 +11,7 @@ export class ArticleService {
   articles: Article[] | undefined;
   errorMsg = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private toolService: ToolsService) {}
 
   async add(newArticle: NewArticle) {
     await lastValueFrom(

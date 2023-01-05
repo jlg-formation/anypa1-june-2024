@@ -1,0 +1,28 @@
+{
+  "name": "angular-gestion-stock",
+  "version": "1.0.0",
+  "description": "Example of angular project monorepo",
+  "scripts": {
+    "clean": "npm exec --workspaces -- npx rimraf node_modules && npx rimraf node_modules"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlg-formation/any-example.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jlg-formation/any-example/issues"
+  },
+  "homepage": "https://github.com/jlg-formation/any-example#readme",
+  "workspaces": [
+    "common",
+    "angular-tools",
+    "back",
+    "front"
+  ],
+  "devDependencies": {
+    "rimraf": "^3.0.2"
+  }
+}

@@ -56,7 +56,9 @@
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef i18n>Nom</th>
-        <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        <td mat-cell *matCellDef="let element">
+          {{ element.name | ellipsis : 8 }}
+        </td>
       </ng-container>
 
       <!-- Price Column -->

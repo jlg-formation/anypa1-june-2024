@@ -24,6 +24,7 @@ import { AuthorizationInterceptor } from './interceptors/authorization.intercept
 import { ListComponent } from './list/list.component';
 import { ArticleService } from './services/article.service';
 import { StockRoutingModule } from './stock-routing.module';
+import { ToolsModule } from '@gestionstock/angular-tools';
 
 console.log('MAT_TOOLTIP_DEFAULT_OPTIONS: ', MAT_TOOLTIP_DEFAULT_OPTIONS);
 
@@ -62,6 +63,7 @@ const matTooltipDefaultOptions: MatTooltipDefaultOptions = {
     MatInputModule,
     MatTooltipModule,
     MatAutocompleteModule,
+    ToolsModule,
   ],
 })
 export class StockModule {}

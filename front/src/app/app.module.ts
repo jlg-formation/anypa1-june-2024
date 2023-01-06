@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { MatButtonModule } from '@angular/material/button';
@@ -20,7 +20,7 @@ import { LegalComponent } from './routes/legal/legal.component';
     MatButtonModule,
     MatIconModule,
   ],
-  providers: [],
+  providers: [{ provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

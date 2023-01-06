@@ -62,7 +62,9 @@
       <!-- Price Column -->
       <ng-container matColumnDef="price">
         <th mat-header-cell *matHeaderCellDef i18n>Prix</th>
-        <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+        <td mat-cell *matCellDef="let element">
+          {{ element.price | currency }}
+        </td>
       </ng-container>
 
       <!-- Quantity Column -->

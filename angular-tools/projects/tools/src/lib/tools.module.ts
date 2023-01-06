@@ -1,19 +1,11 @@
 import { NgModule } from '@angular/core';
-import { ToolsComponent } from './tools.component';
+import { AutofocusDirective } from './autofocus.directive';
 import { EllipsisPipe } from './ellipsis.pipe';
-
-
+import { ToolsComponent } from './tools.component';
 
 @NgModule({
-  declarations: [
-    ToolsComponent,
-    EllipsisPipe
-  ],
-  imports: [
-  ],
-  exports: [
-    ToolsComponent,
-    EllipsisPipe
-  ]
+  declarations: [ToolsComponent, EllipsisPipe, AutofocusDirective],
+  imports: [],
+  exports: [ToolsComponent, EllipsisPipe, AutofocusDirective],
 })
-export class ToolsModule { }
+export class ToolsModule {}

@@ -1,6 +1,12 @@
 {
-  "name": "angular-tools",
-  "version": "0.0.0",
+  "name": "@gestionstock/angular-tools",
+  "version": "0.0.1",
+  "module": "dist/tools/fesm2015/gestionstock-angular-tools.mjs",
+  "es2020": "dist/tools/fesm2020/gestionstock-angular-tools.mjs",
+  "esm2020": "dist/tools/esm2020/gestionstock-angular-tools.mjs",
+  "fesm2020": "dist/tools/fesm2020/gestionstock-angular-tools.mjs",
+  "fesm2015": "dist/tools/fesm2015/gestionstock-angular-tools.mjs",
+  "typings": "dist/tools/index.d.ts",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

@@ -3,7 +3,12 @@
   <form [formGroup]="f" (ngSubmit)="submit()" autocomplete="off">
     <mat-form-field>
       <mat-label i18n>Nom</mat-label>
-      <input matInput formControlName="name" [matAutocomplete]="auto" />
+      <input
+        matInput
+        formControlName="name"
+        [matAutocomplete]="auto"
+        libAutofocus
+      />
       <mat-hint>Entrer au moins 3 caractères</mat-hint>
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
         <mat-option

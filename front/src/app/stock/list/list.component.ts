@@ -7,11 +7,16 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { Article } from '../../interfaces/article';
 import { ArticleService } from '../../services/article.service';
+import { CommonModule } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
+  standalone: true,
+  imports: [CommonModule, FontAwesomeModule, RouterLink],
 })
 export class ListComponent implements OnInit {
   faCircleNotch = faCircleNotch;

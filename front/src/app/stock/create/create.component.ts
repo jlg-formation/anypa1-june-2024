@@ -1,6 +1,13 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCircleNotch, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { lastValueFrom, timer } from 'rxjs';
 import { NewArticle } from '../../interfaces/article';
@@ -10,6 +17,8 @@ import { ArticleService } from '../../services/article.service';
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss'],
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule, FontAwesomeModule],
 })
 export class CreateComponent implements OnInit {
   errorMsg = '';

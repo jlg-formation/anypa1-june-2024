@@ -20,7 +20,7 @@ import { ArticleService } from '../../services/article.service';
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule, FontAwesomeModule],
 })
-export class CreateComponent implements OnInit {
+export default class CreateComponent implements OnInit {
   errorMsg = '';
   f = new FormGroup({
     name: new FormControl('Truc', [Validators.required]),

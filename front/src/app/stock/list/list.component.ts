@@ -18,7 +18,7 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [CommonModule, FontAwesomeModule, RouterLink],
 })
-export class ListComponent implements OnInit {
+export default class ListComponent implements OnInit {
   faCircleNotch = faCircleNotch;
   faPlus = faPlus;
   faRotateRight = faRotateRight;

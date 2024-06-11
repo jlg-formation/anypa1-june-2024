@@ -55,7 +55,7 @@ export default class CreateComponent implements OnInit {
       this.isAdding = true;
       await lastValueFrom(timer(1000));
       await lastValueFrom(this.articleService.add(this.f.getRawValue()));
-      await this.articleService.load();
+      await lastValueFrom(this.articleService.load());
       await this.router.navigate(['..'], { relativeTo: this.route });
     } catch (err) {
       if (err instanceof Error) {

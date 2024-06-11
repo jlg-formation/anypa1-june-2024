@@ -9,6 +9,7 @@ import {
   timer,
   Observable,
   of,
+  map,
 } from 'rxjs';
 
 const url = '/api/articles';
@@ -32,19 +33,22 @@ export class ArticleService {
     );
   }
 
-  async load() {
-    try {
-      this.errorMsg = '';
-      await this.http
-        .get<Article[]>(url)
-        .pipe(delay(1000))
-        .forEach((articles) => {
-          this.articles = articles;
-        });
-    } catch (err) {
-      console.log('err: ', err);
-      this.errorMsg = 'Technical Error';
-    }
+  load(): Observable<void> {
+    return of(undefined).pipe(
+      switchMap(() => {
+        this.errorMsg = '';
+        return this.http.get<Article[]>(url);
+      }),
+      delay(1000),
+      map((articles) => {
+        this.articles = articles;
+      }),
+      catchError((err) => {
+        console.log('err: ', err);
+        this.errorMsg = 'Technical Error';
+        return of(undefined);
+      })
+    );
   }
 
   async remove(ids: string[]) {

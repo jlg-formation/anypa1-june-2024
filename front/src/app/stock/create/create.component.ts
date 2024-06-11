@@ -9,7 +9,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCircleNotch, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { lastValueFrom, timer } from 'rxjs';
-import { NewArticle } from '../interfaces/article';
 import { ArticleService } from '../services/article.service';
 
 @Component({
@@ -22,9 +21,18 @@ import { ArticleService } from '../services/article.service';
 export default class CreateComponent implements OnInit {
   errorMsg = '';
   f = new FormGroup({
-    name: new FormControl('Truc', [Validators.required]),
-    price: new FormControl(0, [Validators.required]),
-    qty: new FormControl(1, [Validators.required]),
+    name: new FormControl('Truc', {
+      nonNullable: true,
+      validators: [Validators.required],
+    }),
+    price: new FormControl(0, {
+      nonNullable: true,
+      validators: [Validators.required],
+    }),
+    qty: new FormControl(1, {
+      nonNullable: true,
+      validators: [Validators.required],
+    }),
   });
   faCircleNotch = faCircleNotch;
   faPlus = faPlus;
@@ -42,7 +50,7 @@ export default class CreateComponent implements OnInit {
     try {
       this.isAdding = true;
       await lastValueFrom(timer(1000));
-      await this.articleService.add(this.f.value as NewArticle);
+      await this.articleService.add(this.f.getRawValue());
       await this.articleService.load();
       await this.router.navigate(['..'], { relativeTo: this.route });
     } catch (err) {

@@ -4,13 +4,19 @@ const obs = new Observable((subscriber) => {
   subscriber.next("titi");
   subscriber.next(123);
 
-  setTimeout(() => {
+  const timer = setTimeout(() => {
+    console.log("run setTimeout");
     subscriber.next(false);
-    subscriber.complete();
+    subscriber.error(new Error("oups"));
   }, 1000);
+
+  return () => {
+    console.log("fin de vie");
+    clearTimeout(timer);
+  };
 });
 
-obs.subscribe({
+const subscription = obs.subscribe({
   next: (data) => {
     console.log("data: ", data);
   },
@@ -21,3 +27,7 @@ obs.subscribe({
     console.log("complete");
   },
 });
+
+// setTimeout(() => {
+//   subscription.unsubscribe();
+// }, 500);

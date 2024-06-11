@@ -13,6 +13,7 @@ import { ArticleService } from '../services/article.service';
 import { JsonPipe } from '@angular/common';
 import { getErrorMessage } from '../../../misc/error';
 import { isIntegerValidator } from '../../validators/is-integer.validator';
+import { filterInteger } from '../../../misc/guide';
 
 @Component({
   selector: 'app-create',
@@ -40,12 +41,7 @@ export default class CreateComponent implements OnInit {
   ) {}
 
   filterInteger(event: KeyboardEvent) {
-    const numberList = new Array(10).fill(0).map((n, i) => i + '');
-
-    if (numberList.includes(event.key)) {
-      return true;
-    }
-    return false;
+    return filterInteger(event);
   }
 
   getErrorMessage(control: FormControl) {

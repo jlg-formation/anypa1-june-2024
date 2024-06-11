@@ -5,7 +5,20 @@
       <span>Nom</span>
       <input type="text" formControlName="name" />
       <span class="error" role="alert">
-        @if (f.controls.name.invalid) { Champ obligatoire }
+        @if (f.controls.name.touched) { @if
+        (f.controls.name.errors?.['required']) { Champ obligatoire } @if
+        (f.controls.name.errors?.['maxlength']) {
+        <span>
+          Champ trop long ({{
+            f.controls.name.errors?.['maxlength'].actualLength
+          }}
+          &gt;
+          {{ 
+f.controls.name.errors?.['maxlength'].requiredLength
+
+          }})</span
+        >
+        } }
       </span>
     </label>
     <label>
@@ -31,4 +44,6 @@
       </button>
     </div>
   </form>
+
+  {{ f.controls.name.errors | json }}
 </main>

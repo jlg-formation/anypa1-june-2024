@@ -39,6 +39,15 @@ export default class CreateComponent implements OnInit {
     private fb: FormBuilder
   ) {}
 
+  filterInteger(event: KeyboardEvent) {
+    const numberList = new Array(10).fill(0).map((n, i) => i + '');
+
+    if (numberList.includes(event.key)) {
+      return true;
+    }
+    return false;
+  }
+
   getErrorMessage(control: FormControl) {
     return getErrorMessage(control);
   }
@@ -53,7 +62,6 @@ export default class CreateComponent implements OnInit {
       await this.articleService.load();
       await this.router.navigate(['..'], { relativeTo: this.route });
     } catch (err) {
-      console.log('err: ', err);
       if (err instanceof Error) {
         this.errorMsg = err.message;
       }

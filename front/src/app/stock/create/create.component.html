@@ -17,7 +17,11 @@
     </label>
     <label>
       <span>Quantité</span>
-      <input type="number" formControlName="qty" />
+      <input
+        type="number"
+        formControlName="qty"
+        (keypress)="filterInteger($event)"
+      />
       <span class="error" role="alert">
         {{ getErrorMessage(f.controls.qty) }}
       </span>

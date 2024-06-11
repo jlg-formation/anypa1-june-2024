@@ -1,7 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Article, NewArticle } from '../interfaces/article';
 import { HttpClient } from '@angular/common/http';
-import { delay, lastValueFrom, catchError, switchMap, timer } from 'rxjs';
+import {
+  delay,
+  lastValueFrom,
+  catchError,
+  switchMap,
+  timer,
+  Observable,
+  of,
+} from 'rxjs';
 
 const url = '/api/articles';
 
@@ -14,14 +22,13 @@ export class ArticleService {
 
   constructor(private http: HttpClient) {}
 
-  async add(newArticle: NewArticle) {
-    await lastValueFrom(
-      this.http.post<void>(url, newArticle).pipe(
-        catchError((err) => {
-          console.log('err: ', err);
-          throw new Error('Technical error');
-        })
-      )
+  add(newArticle: NewArticle): Observable<void> {
+    return of(undefined).pipe(
+      switchMap(() => this.http.post<void>(url, newArticle)),
+      catchError((err) => {
+        console.log('err: ', err);
+        throw new Error('Technical error');
+      })
     );
   }
 

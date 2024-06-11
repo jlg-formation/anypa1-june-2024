@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -16,7 +15,7 @@ import { ArticleService } from '../services/article.service';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   standalone: true,
-  imports: [CommonModule, FontAwesomeModule, RouterLink],
+  imports: [FontAwesomeModule, RouterLink],
 })
 export default class ListComponent implements OnInit {
   faCircleNotch = faCircleNotch;

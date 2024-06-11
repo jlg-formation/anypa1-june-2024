@@ -1,4 +1,3 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
@@ -18,7 +17,7 @@ import { ArticleService } from '../services/article.service';
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss'],
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, FontAwesomeModule],
+  imports: [ReactiveFormsModule, FontAwesomeModule],
 })
 export default class CreateComponent implements OnInit {
   errorMsg = '';

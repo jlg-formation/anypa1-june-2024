@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   standalone: true,
   imports: [],
 })
-export class LegalComponent implements OnInit {
+export default class LegalComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}

@@ -4,6 +4,9 @@
     <label>
       <span>Nom</span>
       <input type="text" formControlName="name" />
+      <span class="error" role="alert">
+        @if (f.controls.name.invalid) { Champ obligatoire }
+      </span>
     </label>
     <label>
       <span>Prix</span>
@@ -19,7 +22,7 @@
       }
     </div>
     <div class="buttons">
-      <button class="primary" [disabled]="isAdding">
+      <button class="primary" [disabled]="isAdding || f.invalid">
         <fa-icon
           [icon]="isAdding ? faCircleNotch : faPlus"
           [spin]="isAdding"

@@ -13,9 +13,14 @@ form {
       border-radius: 0.3em;
       padding: 0.5em 1em;
     }
+
+    .error {
+      height: 1em;
+      font-weight: bold;
+    }
   }
 
-  .error {
+  div.error {
     height: 3em;
     display: flex;
     align-items: center;

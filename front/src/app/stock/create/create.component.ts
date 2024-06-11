@@ -12,6 +12,7 @@ import { lastValueFrom, timer } from 'rxjs';
 import { ArticleService } from '../services/article.service';
 import { JsonPipe } from '@angular/common';
 import { getErrorMessage } from '../../../misc/error';
+import { isIntegerValidator } from '../../validators/is-integer.validator';
 
 @Component({
   selector: 'app-create',
@@ -25,7 +26,7 @@ export default class CreateComponent implements OnInit {
   f = this.fb.nonNullable.group({
     name: ['', [Validators.required, Validators.maxLength(10)]],
     price: [0, [Validators.required, Validators.min(0)]],
-    qty: [1, [Validators.required, Validators.min(0)]],
+    qty: [1, [Validators.required, Validators.min(0), isIntegerValidator]],
   });
   faCircleNotch = faCircleNotch;
   faPlus = faPlus;

@@ -17,5 +17,8 @@ export const getErrorMessage = (control: FormControl): string => {
   if (control.errors['min']) {
     return `Le Champ doit être positif`;
   }
+  if ('isInteger' in control.errors) {
+    return `Le Champ doit être un entier`;
+  }
   throw new Error('error message not found');
 };

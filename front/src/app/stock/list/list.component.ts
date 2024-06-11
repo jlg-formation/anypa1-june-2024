@@ -1,15 +1,15 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   faCircleNotch,
   faPlus,
   faRotateRight,
   faTrashAlt,
 } from '@fortawesome/free-solid-svg-icons';
-import { Article } from '../../interfaces/article';
-import { ArticleService } from '../../services/article.service';
-import { CommonModule } from '@angular/common';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { RouterLink } from '@angular/router';
+import { Article } from '../interfaces/article';
+import { ArticleService } from '../services/article.service';
 
 @Component({
   selector: 'app-list',

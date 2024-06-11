@@ -10,8 +10,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faCircleNotch, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { lastValueFrom, timer } from 'rxjs';
-import { NewArticle } from '../../interfaces/article';
-import { ArticleService } from '../../services/article.service';
+import { NewArticle } from '../interfaces/article';
+import { ArticleService } from '../services/article.service';
 
 @Component({
   selector: 'app-create',

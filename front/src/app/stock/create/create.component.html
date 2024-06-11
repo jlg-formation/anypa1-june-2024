@@ -5,29 +5,22 @@
       <span>Nom</span>
       <input type="text" formControlName="name" />
       <span class="error" role="alert">
-        @if (f.controls.name.touched) { @if
-        (f.controls.name.errors?.['required']) { Champ obligatoire } @if
-        (f.controls.name.errors?.['maxlength']) {
-        <span>
-          Champ trop long ({{
-            f.controls.name.errors?.['maxlength'].actualLength
-          }}
-          &gt;
-          {{ 
-f.controls.name.errors?.['maxlength'].requiredLength
-
-          }})</span
-        >
-        } }
+        {{ getErrorMessage(f.controls.name) }}
       </span>
     </label>
     <label>
       <span>Prix</span>
       <input type="number" formControlName="price" />
+      <span class="error" role="alert">
+        {{ getErrorMessage(f.controls.price) }}
+      </span>
     </label>
     <label>
       <span>Quantité</span>
       <input type="number" formControlName="qty" />
+      <span class="error" role="alert">
+        {{ getErrorMessage(f.controls.qty) }}
+      </span>
     </label>
     <div class="error">
       @if (errorMsg) {

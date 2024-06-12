@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-legal',
@@ -8,7 +8,12 @@ import { Component, OnInit } from '@angular/core';
   imports: [],
 })
 export default class LegalComponent implements OnInit {
+  counter = 0;
   constructor() {}
+
+  increment() {
+    this.counter++;
+  }
 
   ngOnInit(): void {}
 }

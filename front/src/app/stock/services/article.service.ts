@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, signal } from '@angular/core';
+import { Injectable, computed, effect, signal } from '@angular/core';
 import { Observable, catchError, delay, map, of, switchMap } from 'rxjs';
 import { Article, NewArticle } from '../interfaces/article';
 
@@ -12,7 +12,19 @@ export class ArticleService {
   articles = signal<Article[] | undefined>(undefined);
   errorMsg = '';
 
-  constructor(private http: HttpClient) {}
+  totalArticles = computed(() => {
+    const articles = this.articles();
+    if (articles === undefined) {
+      return 0;
+    }
+    return articles.length;
+  });
+
+  constructor(private http: HttpClient) {
+    effect(() => {
+      console.log(`the new articles are: `, this.totalArticles());
+    });
+  }
 
   add(newArticle: NewArticle): Observable<void> {
     return of(undefined).pipe(

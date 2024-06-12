@@ -1,7 +1,9 @@
 <main>
   <h1>Liste des articles</h1>
   <div class="content">
-    <div class="total">Total articles = {{ getTotalArticles() }}</div>
+    <div class="total">
+      Total articles = {{ articleService.totalArticles() }}
+    </div>
     <div class="error">
       @if (errorMsg) {
       <span>Erreur: {{ errorMsg }}</span>

@@ -36,14 +36,6 @@ export default class ListComponent implements OnInit {
   isRemoving = false;
   errorMsg = '';
 
-  getTotalArticles = computed(() => {
-    const articles = this.articleService.articles();
-    if (articles === undefined) {
-      return 0;
-    }
-    return articles.length;
-  });
-
   constructor(
     public articleService: ArticleService,
     private cd: ChangeDetectorRef

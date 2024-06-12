@@ -1,17 +1,27 @@
+import { HttpClient } from '@angular/common/http';
 import { ChangeDetectorRef } from '@angular/core';
-import { AbstractControl, AsyncValidatorFn } from '@angular/forms';
+import {
+  AbstractControl,
+  AsyncValidatorFn,
+  ValidationErrors,
+} from '@angular/forms';
+import { Observable, catchError, delay, map, of, switchMap } from 'rxjs';
+
+const url = '/api/check';
 
 export const nameAsyncValidator =
-  (cd: ChangeDetectorRef): AsyncValidatorFn =>
-  async (control: AbstractControl) => {
+  (cd: ChangeDetectorRef, http: HttpClient): AsyncValidatorFn =>
+  (control: AbstractControl): Observable<null | ValidationErrors> => {
     const name = control.value;
-    const response = await fetch('http://localhost:3000/api/check', {
-      method: 'POST',
-      body: JSON.stringify({ name }),
-      headers: { 'Content-Type': 'application/json' },
-    });
-    const { result }: { result: boolean } = await response.json();
-    const myResult = result ? null : { badname: true };
-    cd.markForCheck();
-    return myResult;
+    return of(undefined).pipe(
+      delay(300),
+      switchMap(() => http.post<{ result: boolean }>(url, { name })),
+      map(({ result }) => {
+        cd.markForCheck();
+        return result ? null : { badname: true };
+      }),
+      catchError((err) => {
+        return of(null);
+      })
+    );
   };

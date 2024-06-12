@@ -26,6 +26,7 @@ import { getErrorMessage } from '../../../misc/error';
 import { isIntegerValidator } from '../../validators/is-integer.validator';
 import { filterInteger } from '../../../misc/guide';
 import { nameAsyncValidator } from '../../validators/name.validator';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-create',
@@ -41,7 +42,7 @@ export default class CreateComponent implements OnInit {
       '',
       {
         validators: [Validators.required, Validators.maxLength(10)],
-        asyncValidators: [nameAsyncValidator(this.cd)],
+        asyncValidators: [nameAsyncValidator(this.cd, this.http)],
       },
     ],
     price: [0, [Validators.required, Validators.min(0)]],
@@ -56,7 +57,8 @@ export default class CreateComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private http: HttpClient
   ) {}
 
   filterInteger(event: KeyboardEvent) {

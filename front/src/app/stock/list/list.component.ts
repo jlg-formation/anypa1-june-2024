@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, computed } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
@@ -36,13 +36,21 @@ export default class ListComponent implements OnInit {
   isRemoving = false;
   errorMsg = '';
 
+  getTotalArticles = computed(() => {
+    const articles = this.articleService.articles();
+    if (articles === undefined) {
+      return 0;
+    }
+    return articles.length;
+  });
+
   constructor(
     public articleService: ArticleService,
     private cd: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
-    if (this.articleService.articles === undefined) {
+    if (this.articleService.articles() === undefined) {
       this.articleService
         .load()
         .pipe(

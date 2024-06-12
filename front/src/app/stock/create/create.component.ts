@@ -27,13 +27,19 @@ import { isIntegerValidator } from '../../validators/is-integer.validator';
 import { filterInteger } from '../../../misc/guide';
 import { nameAsyncValidator } from '../../validators/name.validator';
 import { HttpClient } from '@angular/common/http';
+import { AutofocusDirective } from '../../widgets/autofocus.directive';
 
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.scss'],
   standalone: true,
-  imports: [ReactiveFormsModule, FontAwesomeModule, JsonPipe],
+  imports: [
+    ReactiveFormsModule,
+    FontAwesomeModule,
+    JsonPipe,
+    AutofocusDirective,
+  ],
 })
 export default class CreateComponent implements OnInit {
   errorMsg = '';

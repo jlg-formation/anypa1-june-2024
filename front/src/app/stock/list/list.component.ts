@@ -67,6 +67,7 @@ export default class ListComponent implements OnInit {
       }),
       finalize(() => {
         this.isRefreshing = false;
+        this.cd.markForCheck();
       })
     );
   }
@@ -92,6 +93,7 @@ export default class ListComponent implements OnInit {
       }),
       finalize(() => {
         this.isRemoving = false;
+        this.cd.markForCheck();
       })
     );
   }

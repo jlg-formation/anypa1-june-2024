@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -48,7 +48,8 @@ export default class CreateComponent implements OnInit {
     private articleService: ArticleService,
     private router: Router,
     private route: ActivatedRoute,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private cd: ChangeDetectorRef
   ) {}
 
   filterInteger(event: KeyboardEvent) {
@@ -79,6 +80,7 @@ export default class CreateComponent implements OnInit {
       }),
       finalize(() => {
         this.isAdding = false;
+        this.cd.markForCheck();
       })
     );
   }

@@ -38,4 +38,16 @@ app.delete("/articles", (req, res) => {
   res.status(204).end();
 });
 
+app.post("/check", (req, res) => {
+  setTimeout(() => {
+    const name: string = req.body.name;
+    const forbiddenWords = ["zut", "kiki"];
+    if (forbiddenWords.includes(name)) {
+      res.json({ result: false });
+      return;
+    }
+    res.json({ result: true });
+  }, 2000);
+});
+
 export const api = app;

@@ -25,6 +25,7 @@ import { JsonPipe } from '@angular/common';
 import { getErrorMessage } from '../../../misc/error';
 import { isIntegerValidator } from '../../validators/is-integer.validator';
 import { filterInteger } from '../../../misc/guide';
+import { nameAsyncValidator } from '../../validators/name.validator';
 
 @Component({
   selector: 'app-create',
@@ -36,7 +37,13 @@ import { filterInteger } from '../../../misc/guide';
 export default class CreateComponent implements OnInit {
   errorMsg = '';
   f = this.fb.nonNullable.group({
-    name: ['', [Validators.required, Validators.maxLength(10)]],
+    name: [
+      '',
+      {
+        validators: [Validators.required, Validators.maxLength(10)],
+        asyncValidators: [nameAsyncValidator(this.cd)],
+      },
+    ],
     price: [0, [Validators.required, Validators.min(0)]],
     qty: [1, [Validators.required, Validators.min(0), isIntegerValidator]],
   });

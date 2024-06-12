@@ -21,5 +21,8 @@ export const getErrorMessage = (control: FormControl): string => {
   if ('isInteger' in control.errors) {
     return `Le Champ doit être un entier`;
   }
+  if ('badname' in control.errors) {
+    return `Valeur interdite`;
+  }
   throw new Error('error message not found');
 };

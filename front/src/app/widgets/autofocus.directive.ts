@@ -3,7 +3,7 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 type Mode = 'focus' | 'select' | '';
 
 @Directive({
-  selector: '[appAutofocus]',
+  selector: 'input[appAutofocus]',
   standalone: true,
 })
 export class AutofocusDirective implements OnInit {

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, computed } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
@@ -7,24 +7,18 @@ import {
   faRotateRight,
   faTrashAlt,
 } from '@fortawesome/free-solid-svg-icons';
+import { Observable, catchError, finalize, of, switchMap, tap } from 'rxjs';
+import { EllipsisPipe } from '../../widgets/ellipsis.pipe';
 import { Article } from '../interfaces/article';
 import { ArticleService } from '../services/article.service';
-import {
-  Observable,
-  catchError,
-  finalize,
-  lastValueFrom,
-  of,
-  switchMap,
-  tap,
-} from 'rxjs';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
   standalone: true,
-  imports: [FontAwesomeModule, RouterLink],
+  imports: [FontAwesomeModule, RouterLink, EllipsisPipe, CurrencyPipe],
 })
 export default class ListComponent implements OnInit {
   faCircleNotch = faCircleNotch;

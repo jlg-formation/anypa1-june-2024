@@ -1,6 +1,7 @@
 import { FormControl } from '@angular/forms';
 
 export const getErrorMessage = (control: FormControl): string => {
+  console.log('getErrorMessage', control.value);
   if (control.untouched) {
     return '';
   }

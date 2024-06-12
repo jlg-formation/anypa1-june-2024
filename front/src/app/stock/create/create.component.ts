@@ -45,7 +45,7 @@ export default class CreateComponent implements OnInit {
   errorMsg = '';
   f = this.fb.nonNullable.group({
     name: [
-      '',
+      'Truc',
       {
         validators: [Validators.required, Validators.maxLength(10)],
         asyncValidators: [nameAsyncValidator(this.cd, this.http)],
